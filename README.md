@@ -1,0 +1,3 @@
+# database-group-project
+PLANNING DATABASE STRUCTURE
+CREATING TABLES
