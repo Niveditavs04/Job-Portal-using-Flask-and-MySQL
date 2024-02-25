@@ -1,0 +1,57 @@
+CREATE TABLE Education_detail (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    job_seeker_id INT,
+    degree VARCHAR(100),
+    major VARCHAR(100),
+    institution VARCHAR(100),
+    completion_year INT,
+    percentage DECIMAL(5, 2),
+    cgpa DECIMAL(4, 2)
+);
+
+
+CREATE TABLE Experience_details (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    job_seeker_id INT,
+    company_name VARCHAR(100),
+    job_title VARCHAR(100),
+    start_date DATE,
+    end_date DATE,
+    job_location_city VARCHAR(100),
+    job_location_state VARCHAR(100),
+    job_location_country VARCHAR(100),
+    description TEXT
+);
+
+
+CREATE TABLE Seeker_profile (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    full_name VARCHAR(255),
+    email VARCHAR(255),
+    phone_number VARCHAR(20),
+    address VARCHAR(255),
+    city VARCHAR(100),
+    state VARCHAR(100),
+    country VARCHAR(100),
+    postal_code VARCHAR(20),
+    date_of_birth DATE,
+    gender ENUM('Male', 'Female', 'Other'),
+    profile_picture VARCHAR(255),
+    linkedin_url VARCHAR(255)
+);
+
+
+CREATE TABLE Seeker_skillset (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    skill VARCHAR(255),
+    proficiency ENUM('Beginner', 'Intermediate', 'Advanced', 'Expert'),
+    experience_years INT,
+    skill_level INT
+);
+
+CREATE TABLE Seeker_skill_set (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    skill_set_name VARCHAR(200)
+);
