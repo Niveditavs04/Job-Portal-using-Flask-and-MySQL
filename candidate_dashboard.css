@@ -1,0 +1,12 @@
+/* Custom CSS */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+  }
+  .container {
+    margin-top: 50px;
+  }
+  .card {
+    margin-bottom: 20px;
+  }
+  
