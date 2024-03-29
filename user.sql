@@ -18,7 +18,6 @@ CREATE TABLE user_account (
     gender CHAR(1),
     is_active CHAR(1) DEFAULT 'Y',
     contact_number VARCHAR(20),
-    sms_notification_active CHAR(1),
     email_notification_active CHAR(1),
     user_image BLOB,
     registration_date DATE,
