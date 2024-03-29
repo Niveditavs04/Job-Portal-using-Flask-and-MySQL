@@ -1,3 +1,5 @@
+CREATE database db3;
+
 CREATE TABLE job_seeker_profile (
     user_account_id INT PRIMARY KEY,
     first_name VARCHAR(255) NOT NULL,

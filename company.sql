@@ -1,4 +1,4 @@
-
+create database db2;
 
 
 CREATE TABLE business_stream (
