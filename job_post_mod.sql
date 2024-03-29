@@ -2,9 +2,10 @@
 
 
  use db4;
-Database changed
+
+
 create table job_post_activity(
-id int primary key
+id int primary key,
 uacid int ,
 job_app_status_id int,
 job_post_id int,
@@ -46,7 +47,7 @@ city varchar(50),
 state varchar(50) ,
 country varchar(50),
 zip varchar(50));
-Query OK, 0 rows affected (0.04 sec)
+
 
 mysql> show tables;
 +-------------------+
