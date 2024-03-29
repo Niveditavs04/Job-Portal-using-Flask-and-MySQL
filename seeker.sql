@@ -47,7 +47,7 @@ CREATE TABLE profile_visit_log (
     FOREIGN KEY (user_account_id) REFERENCES db1.user_account(id)
 );
 
-CREATE TABLE skill_set (
+CREATE TABLE seeker_skill_set (
     user_account_id INT, 
     skill_set_id INT,
     skill_level INT CHECK (skill_level >= 1 AND skill_level <= 10),
@@ -56,4 +56,7 @@ CREATE TABLE skill_set (
     FOREIGN KEY (skill_set_id) REFERENCES seeker_skill_set(id)
 );
 
+CREATE TABLE skill_set(
+    id int primary key,
+    skill_set_nam varchar(50));
 
