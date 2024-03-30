@@ -49,17 +49,6 @@ country varchar(50),
 zip varchar(50));
 
 
-mysql> show tables;
-+-------------------+
-| Tables_in_db4     |
-+-------------------+
-| job_location      |
-| job_post          |
-| job_post_activity |
-| job_post_skillset |
-| job_type          |
-+-------------------+
-5 rows in set (0.00 sec)
 
 -- create job_application_status, to hold all possible application statuses. Some statuses might be ‘submitted’, ‘under review’, ‘archived’, ‘rejected’, ‘shortlisted for interview’, ‘under recruitment process’, and so on
 create table job_application_status(
@@ -70,13 +59,15 @@ create table job_app_action(
 id int primary key, 
 actionname varchar(20));
 -- create table job post activity log
+
+
 create table jpal(
 id int primary key,
 jpactivity_id int, 
 jpaction_id int,
 actiondt date ,
 userid int,
-FOREIGN KEY (jpactivity_id) REFERENCES job_post_activity(activity_id),
+FOREIGN KEY (jpactivity_id) REFERENCES job_post_activity(id),
 FOREIGN KEY (jpaction_id) REFERENCES job_app_action(id),
 FOREIGN KEY (userid) REFERENCES db1.user_account(id)
 );
@@ -85,7 +76,7 @@ FOREIGN KEY (userid) REFERENCES db1.user_account(id)
 ALTER TABLE job_post_activity
 ADD FOREIGN KEY (job_app_status_id) REFERENCES job_application_status(id),
 ADD FOREIGN KEY (job_post_id) REFERENCES job_post(pid),
-ADD FOREIGN KEY (uacid) REFERENCES db3.skill_set(user_account_id);
+ADD FOREIGN KEY (uacid) REFERENCES db3.seeker_skill_set(user_account_id);
 
  Alter table job_post
   add foreign key(posted_by) references db1.user_account(id),
