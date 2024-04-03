@@ -14,7 +14,7 @@ def register():
 def dashboard():
     return render_template("dashboard.html")
 @app.route("/experience")
-def dashboard():
+def experience():
     return render_template("dashboard.html")
 if __name__ == "__main__":
     app.run(debug=True)
