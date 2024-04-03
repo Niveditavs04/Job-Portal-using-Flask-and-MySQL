@@ -1,5 +1,5 @@
 CREATE database db3;
-
+USE db3;
 CREATE TABLE job_seeker_profile (
     user_account_id INT PRIMARY KEY,
     first_name VARCHAR(255) NOT NULL,
@@ -55,7 +55,7 @@ CREATE TABLE seeker_skill_set (
     skill_level INT CHECK (skill_level >= 1 AND skill_level <= 10),
     PRIMARY KEY(user_account_id,skill_set_id),
     FOREIGN KEY (user_account_id) REFERENCES db1.user_account(id),
-    FOREIGN KEY (skill_set_id) REFERENCES seeker_skill_set(id)
+    FOREIGN KEY (skill_set_id) REFERENCES skill_set(id)
 );
 
 CREATE TABLE skill_set(
