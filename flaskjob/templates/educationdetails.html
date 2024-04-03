@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education_detail</title>
+    <link rel="stylesheet" href="education.css">
+</head>
+<body>
+    <div class="main">
+        <h2 class="text-center mt-5 mb-4">Education_detail</h2>
+        <form id="educationForm">
+            <div class="education">
+                <div class="input_box">
+                    <span class="detail"><i class="fa fa-clipboard"></i></span>
+                    <input type="text" placeholder="User_id" id="id" required>
+                </div>
+
+                <div class="input_box">
+                    <span class="detail"><i class="fa fa-graduation-cap"></i></span>
+                    <input type="text" placeholder="Certified_degree" id="degree" required>
+                </div>
+
+                <div class="input_box">
+                    <span class="detail"><i class="fa fa-graduation-cap"></i></span>
+                    <input type="text" placeholder="Major" id="major" required>
+                </div>
+
+                <div class="input_box">
+                    <span class="detail"><i class="fa fa-school"></i></span>
+                    <input type="text" placeholder="Institute/University name" id="university" required>
+                </div>
+
+                <div class="input_box">
+                    <span class="detail"><i class="fa fa-calendar"></i></span>
+                    <label for="st_date">Starting date</label>
+                    <input type="date" class="form-control" id="st_date" placeholder="Starting date" required>
+                    <label for="end_date">End date</label>
+                    <input type="date" class="form-control" id="end_date" placeholder="End date" required>
+                </div>
+
+                <div class="input_box">
+                    <span class="detail"><i class="fa fa-percent"></i></span>
+                    <input type="text" placeholder="Percentage" id="percentage" required>
+                </div>
+
+                <div class="input_box">
+                    <span class="detail"><i class="fa fa-marker"></i></span>
+                    <input type="text" placeholder="CGPA" id="CGPA" required>
+                </div>
+
+                <div class="input_box">
+                    <button type="button" onclick="validateForm()">Next</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            var form = document.getElementById("educationForm");
+            if (form.checkValidity()) {
+                window.location.href = "experience.html";
+            } else {
+                alert("Please fill out all required fields.");
+            }
+        }
+    </script>
+</body>
+</html>

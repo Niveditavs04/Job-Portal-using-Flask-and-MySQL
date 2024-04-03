@@ -1,0 +1,79 @@
+/* Reset default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Style the main container */
+.main {
+  width: 70%; /* Adjusted width */
+  margin: 50px auto; /* Adjust margin to center vertically */
+}
+
+/* Style the heading */
+.text-center {
+  text-align: center;
+}
+
+/* Style the form */
+form {
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 10px;
+  font-weight: bold; /* Make the font bold */
+}
+
+/* Style the input boxes */
+.input_box {
+  margin-bottom: 20px;
+}
+
+.input_box input[type="text"],
+.input_box input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  border: 3px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Style the icons */
+.detail {
+  margin-right: 10px;
+  color: #555;
+}
+
+/* Style the submit button */
+input[type="button"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold; /* Make the font bold */
+}
+
+input[type="button"]:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .main {
+      width: 90%;
+  }
+}
+
+/* Adjust button for smaller screens */
+.input_box {
+  position: relative;color: #203ff3;
+}
+
+.input_box button {
+  position: absolute;
+  bottom: -17px;
+  right:0; color: #202bc6;
+  padding: 9px 28px;
+}

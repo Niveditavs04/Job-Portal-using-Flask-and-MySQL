@@ -7,10 +7,11 @@
 
 body {
     font-family: Arial, sans-serif;
+    background-color: #f0d9d6; /* Morpankhi background color */
 }
 
 header {
-    background-color: #333;
+    background-color: #0a0a09;
     padding: 10px;
 }
 
@@ -54,7 +55,7 @@ nav {
 .search-form button {
     padding: 10px 20px;
     margin: 5px;
-    background-color: #007bff;
+    background-color: #5c7fa4;
     border: none;
     border-radius: 5px;
     color: #fff;
@@ -117,13 +118,14 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
 /* Styles for dropdown */
 .dropdown {
     position: relative;
     display: inline-block;
-  }
-  
-  .dropbtn {
+}
+
+.dropbtn {
     background-color: #fff;
     border: none;
     color: #333;
@@ -132,9 +134,9 @@ footer {
     cursor: pointer;
     border-radius: 8px;
     outline: none;
-  }
-  
-  .dropdown-content {
+}
+
+.dropdown-content {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
@@ -142,24 +144,23 @@ footer {
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     border-radius: 8px;
-  }
-  
-  .dropdown-content a {
+}
+
+.dropdown-content a {
     color: #333;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-  }
-  
-  .dropdown-content a:hover {
+}
+
+.dropdown-content a:hover {
     background-color: #ddd;
-  }
-  
-  .dropdown:hover .dropdown-content {
+}
+
+.dropdown:hover .dropdown-content {
     display: block;
-  }
-  
-  .dropdown:hover .dropbtn {
+}
+
+.dropdown:hover .dropbtn {
     background-color: #ccc;
-  }
-  
+}
