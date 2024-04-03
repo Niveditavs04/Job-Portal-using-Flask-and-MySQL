@@ -1,5 +1,5 @@
 create database db2;
-
+USE db2;
 
 CREATE TABLE business_stream (
     id INT PRIMARY KEY,
