@@ -15,6 +15,14 @@ def dashboard():
     return render_template("dashboard.html")
 @app.route("/experience")
 def experience():
-    return render_template("dashboard.html")
+    return render_template("experience.html")
+@app.route("/forgot")
+def forgot():
+    return render_template("forgotpass.html")
+@app.route("/education")
+def education():
+    return render_template("educationdetails.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
+
