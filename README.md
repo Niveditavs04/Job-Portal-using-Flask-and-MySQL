@@ -8,3 +8,4 @@ just create tables without foreign key for each database
 #to run application factory
 go inside directory which has trial2 directory and then type this code in terminal
 code: flask --app trial2 run --debug
+ve : python3 -m venv .venv
