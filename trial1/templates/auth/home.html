@@ -12,12 +12,9 @@
 <header>
   <nav>
     <ul class="nav-links">
-      <li><a href="{{ url_for('portal.hello_flask') }}">Home</a></li>
-      <li> {% if g.user %}
-        <a href="{{ url_for('user.logout') }}">Logout</a>
-      {% else %}
-        <a href="{{ url_for('user.login') }}">Login</a>
-      {% endif %}
+      <li><a href="#">Home</a></li>
+      <li><a href="{{ url_for('login') }}">Login</a>
+
     </li>
       <li><a href="#">Contact Us</a></li>
     </ul>
@@ -29,16 +26,14 @@
   <p>Search Online Jobs!!!</p>
 
   <div class="search-form">
-    <form action="{{ url_for('portal.hello_flask') }}" method="POST">
-    <input type="text" name="job_title" placeholder="Enter Job Title" required>
-    <input type="text" name="company" placeholder="Enter Company">
-    <button  type="submit">Search</button>
-  </form>
+    <input type="text" placeholder="Enter Job Title">
+    <input type="text" placeholder="Enter Company">
+    <button onclick="searchJobs()">Search</button>
   </div>
 
   <div class="user-type">
-    <a href="{{ url_for('user.login') }}"><button>I am Job Seeker</button></a>
-    <a href="{{ url_for('user.login') }}"><button>I am Employer</button></a>
+    <a href="{{ url_for('login') }}"><button>I am Job Seeker</button></a>
+    <button onclick="goToEmployer()">I am Employer</button>
   </div>
 </section>
 <!-- Using Cards with Fade-in Effect -->

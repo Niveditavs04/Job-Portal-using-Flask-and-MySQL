@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Job Portal Login{% endblock %}
+
+{% block content %}
+<div class="skillpage">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skill Set Dropdown</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='skill.css') }}">
+</head>
+<body>
+
+<form action="{{ url_for('seeker.skillselect') }}" method="post">
+    <label for="skill">Select at least one skill:</label>
+    <select name="skill" id="skill" multiple>
+      <option value="" disabled selected>Select a skill</option>
+      {% for skill in skills %}
+      <option value="{{ skill }}">{{ skill }}</option>
+      {% endfor %}
+    </select>
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>
+</div>
+{% endblock %}

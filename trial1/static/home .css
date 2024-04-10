@@ -7,16 +7,11 @@
 
 body {
     font-family: Arial, sans-serif;
-    height: 100vh;
 }
 
 header {
     background-color: #333;
-    text-align: right;
-    padding: 10px 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
+    padding: 10px;
 }
 
 nav {
@@ -117,7 +112,7 @@ footer {
     background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 10px 0;
+    padding: 10px;
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -167,25 +162,3 @@ footer {
   .dropdown:hover .dropbtn {
     background-color: #ccc;
   }
-
-.dropdown-menu {
-    background-color: #fff; /* Background color of the dropdown menu */
-    border: 1px solid #ccc; /* Border around the dropdown menu */
-    padding: 0.5rem 0; /* Padding inside the dropdown menu */
-}
-
-.dropdown-item {
-    display: block; /* Display dropdown items as block elements */
-    width: 100%; /* Set the width of dropdown items to 100% */
-    padding: 0.5rem 1rem; /* Padding inside each dropdown item */
-    clear: both; /* Clear float elements */
-    font-weight: normal; /* Set font weight of dropdown items */
-    color: #333; /* Text color of dropdown items */
-    text-decoration: none; /* Remove underline from dropdown items */
-    white-space: nowrap; /* Prevent line breaks in dropdown items */
-}
-
-.dropdown-item:hover, .dropdown-item:focus {
-    background-color: #f8f9fa; /* Background color on hover or focus */
-}
-

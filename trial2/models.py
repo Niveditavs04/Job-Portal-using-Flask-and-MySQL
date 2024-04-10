@@ -25,44 +25,95 @@ class Model1:
         return self.connection.cursor()
     # Add methods to interact with Model1 data as needed
 
+    def commit(self):
+        if self.connection is None:
+            raise ValueError("Database connection is not established.")
+        self.connection.commit()
+
 class Model2:
-    # Model definition for database 2
+    # Model definition for database 1
     def __init__(self):
         self.connection = None
 
     def connect(self, host, user, password, database):
-        self.connection = mysql.connector.connect(
-            host=host,
-            user=user,
-            password=password,
-            database=database
-        )
+        try:
+            self.connection = mysql.connector.connect(
+                host=host,
+                user=user,
+                password=password,
+                database=database
+            )
+        except mysql.connector.Error as e:
+            print(f"Error connecting to database: {e}")
+            self.connection = None
+
+    def get_cursor(self):
+        if self.connection is None:
+            raise ValueError("Database connection is not established.")
+        return self.connection.cursor()
+    # Add methods to interact with Model1 data as needed
+
+    def commit(self):
+        if self.connection is None:
+            raise ValueError("Database connection is not established.")
+        self.connection.commit()
 
 class Model3:
-    # Model definition for database 2
+    # Model definition for database 1
     def __init__(self):
         self.connection = None
 
     def connect(self, host, user, password, database):
-        self.connection = mysql.connector.connect(
-            host=host,
-            user=user,
-            password=password,
-            database=database
-        )
+        try:
+            self.connection = mysql.connector.connect(
+                host=host,
+                user=user,
+                password=password,
+                database=database
+            )
+        except mysql.connector.Error as e:
+            print(f"Error connecting to database: {e}")
+            self.connection = None
+
+    def get_cursor(self):
+        if self.connection is None:
+            raise ValueError("Database connection is not established.")
+        return self.connection.cursor()
+    # Add methods to interact with Model1 data as needed
+
+    def commit(self):
+        if self.connection is None:
+            raise ValueError("Database connection is not established.")
+        self.connection.commit()
 
 class Model4:
-    # Model definition for database 2
+    # Model definition for database 1
     def __init__(self):
         self.connection = None
 
     def connect(self, host, user, password, database):
-        self.connection = mysql.connector.connect(
-            host=host,
-            user=user,
-            password=password,
-            database=database
-        )
+        try:
+            self.connection = mysql.connector.connect(
+                host=host,
+                user=user,
+                password=password,
+                database=database
+            )
+        except mysql.connector.Error as e:
+            print(f"Error connecting to database: {e}")
+            self.connection = None
+
+    def get_cursor(self):
+        if self.connection is None:
+            raise ValueError("Database connection is not established.")
+        return self.connection.cursor()
+    # Add methods to interact with Model1 data as needed
+
+    def commit(self):
+        if self.connection is None:
+            raise ValueError("Database connection is not established.")
+        self.connection.commit()
+
     # Add methods to interact with Model2 data as needed
 
 # Define other models as necessary...

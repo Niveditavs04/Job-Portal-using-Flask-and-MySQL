@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Job Portal Login{% endblock %}
+
+{% block content %}
+<div class="employeralljobspage">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Post Details</title>
+</head>
+<body>
+    <h1>Job Post Details</h1>
+    {% for post in posts %}
+        <div class="post">
+            
+            <p><strong>Post ID:</strong> {{ post[0] }}</p>
+            <p><strong>Created Date:</strong> {{ post[1] }}</p>
+            <p><strong>Job Description:</strong> {{ post[2] }}</p>
+            <p><strong>Company Name:</strong> {{ post[3] }}</p>
+            <p><strong>Job Type:</strong> {{ post[4] }}</p>
+            <p><strong>Address:</strong> {{ post[5] }}</p>
+            <p><strong>Skill Set Names:</strong> {{ post[6] }}</p>
+            <form action="/delete_post/{{ post[0] }}" method="post">
+                <button type="submit">Delete</button>
+            </form>
+            <form action="/update_jobpost/{{ post[0] }}" method="post">
+                <button type="submit">Edit</button>
+            </form>
+        </div>
+        <hr>
+    {% endfor %}
+</body>
+</html>
+
+</div>
+{% endblock %}

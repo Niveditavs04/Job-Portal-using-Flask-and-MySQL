@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,14 +23,14 @@
     <div class="container">
         <h2 class="text-center mt-5 mb-4">Registration Form</h2>
         <div class="form-container">
-            <form action="{{ url_for('user.register') }}" method="POST">
+            <form>
                 <div class="form-group input-name">
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-user"></i></span>
                         </div>
-                        <input type="text" class="form-control" name="first_name" placeholder="First name*" required>
-                        <input type="text" class="form-control" name="last_name" placeholder="Last name*" required>
+                        <input type="text" class="form-control" placeholder="First name*" required>
+                        <input type="text" class="form-control" placeholder="Last name*" required>
                     </div>
                 </div>
 
@@ -40,7 +39,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                         </div>
-                        <input type="email" class="form-control" name="email" placeholder="Email*" required>
+                        <input type="email" class="form-control" placeholder="Email*" required>
                     </div>
                 </div>
 
@@ -49,7 +48,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                         </div>
-                        <input type="date" class="form-control"  name="date_of_birth" required> <!-- Add 'required' attribute to make it mandatory -->
+                        <input type="date" class="form-control" required> <!-- Add 'required' attribute to make it mandatory -->
                     </div>
                 </div>
 
@@ -58,7 +57,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-lock"></i></span>
                         </div>
-                        <input type="password" class="form-control" name="password" placeholder="Password*" required>
+                        <input type="password" class="form-control" placeholder="Password*" required>
                     </div>
                 </div>
 
@@ -95,10 +94,10 @@
 
                 <div class="form-group input-name">
                     <label for="profilePicture">Profile Picture:</label>
-                    <input type="file" class="form-control-file" name="profilePicture" id="profilePicture" accept="image/*">
+                    <input type="file" class="form-control-file" id="profilePicture" accept="image/*">
                 </div>
 
-                 <!-- Option box with three options -->
+                   <!-- Option box with three options -->
             <div class="form-group input-name">
                 <label>Register as:</label>
                 <div class="form-check">
@@ -130,9 +129,8 @@
                     <label class="form-check-label" for="O">Other</label>
                 </div>
             </div>
+                
 
-
-        
                 <div class="form-group input-name">
                     <button type="submit" class="btn btn-primary btn-block">Register</button>
                 </div>
@@ -144,4 +142,3 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
-

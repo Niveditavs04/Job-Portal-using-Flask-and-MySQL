@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}Job Portal Login{% endblock %}
+
+{% block content %}
+<div class="jpostpage">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post Job</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='jpost.css') }}">
+</head>
+<body>
+  <h2>Post Job</h2>
+  <form action="{{ url_for('employer.jobpost') }}" method="post">
+    <div>
+      <label for="job">Select JOB TYPE:</label>
+        <select name="job" id="job" required>
+          <option value="" disabled selected>Select a job type</option>
+          {% for job in jobs %}
+          <option value="{{ job }}">{{ job }}</option>
+          {% endfor %}
+        </select>
+    </div>
+    <label for="companyName">companyName:</label>
+    <input type="text" id="companyName" name="companyName" >
+    <div>
+      <label for="jobDescription">Job Description:</label>
+      <textarea id="jobDescription" name="jobDescription" rows="4" required></textarea>
+    </div>
+
+    <div>
+      <label for="addressStreet">Street Address:</label>
+      <input type="text" id="addressStreet" name="addressStreet" required>
+    </div>
+
+    <div>
+      <label for="addressCity">City:</label>
+      <input type="text" id="addressCity" name="addressCity" required>
+    </div>
+
+    <div>
+      <label for="addressState">State:</label>
+      <input type="text" id="addressState" name="addressState" required>
+    </div>
+
+    <div>
+      <label for="addressCountry">Country:</label>
+      <input type="text" id="addressCountry" name="addressCountry" required>
+    </div>
+
+    <div>
+      <label for="addressZip">pin Code:</label>
+      <input type="text" id="addressZip" name="addressZip" required>
+    </div>
+    <div>
+      <label for="skill">Select skill TYPE:</label>
+        <select name="skill" id="skill" required>
+          <option value="" disabled selected>Select a skill </option>
+          {% for skill in skills %}
+          <option value="{{ skill }}">{{ skill }}</option>
+          {% endfor %}
+        </select>
+    </div>
+    
+    <div>
+      <label>Skill level:</label>
+      <div class="form-check">
+          <input class="form-check-input" type="radio" name="skill_level" id="Basic" value="Basic" required>
+          <label class="form-check-label" for="Basic">Basic</label>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="radio" name="skill_level" id="Medium" value="Medium" required>
+          <label class="form-check-label" for="Medium">Medium</label>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="radio" name="skill_level" id="Expert" value="Expert" required>
+          <label class="form-check-label" for="Expert">Expert</label>
+      </div>
+      </div>
+    <button type="submit">Post Job</button>
+  </form>
+
+</body>
+</html>
+</div>
+{% endblock %}
