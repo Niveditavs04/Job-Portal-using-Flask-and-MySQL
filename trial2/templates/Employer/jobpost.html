@@ -57,7 +57,7 @@
     </div>
     <div>
       <label for="skill">Select skill TYPE:</label>
-        <select name="skill" id="skill" required>
+        <select name="skill" id="skill" multiple>
           <option value="" disabled selected>Select a skill </option>
           {% for skill in skills %}
           <option value="{{ skill }}">{{ skill }}</option>

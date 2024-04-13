@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Applicants</title>
+    <!-- Include your CSS stylesheets here -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='jobsearch.css') }}">
+</head>
+<body>
+    <h1>Job Applicants</h1>
+
+    {% for post in total_applicants %}
+    <div class="post">
+        <h2>Job Post ID: {{ post[0] }}</h2>
+        <a class="action" href="/viewjp/{{ post[0] }}">Click here to view job details!</a>
+            
+        <h3>Activiyt id:{{ post[3] }}</h3>
+        <ul>
+                <p><strong>Applicant ID:</strong> {{ post[1] }}</p>
+                <p><strong>Apply Date:</strong> {{ post[2] }}</p>
+                <p><strong>Status:</strong> {{ post[4]}}</p>
+                <!-- Add more applicant details as needed -->
+                <a class="action" href="/review_app/{{ post[1] }}/{{ post[3] }}">Review</a>
+
+            
+        </ul>
+    </div>
+    {% endfor %}
+
+    <!-- Include your JavaScript code here -->
+</body>
+</html>

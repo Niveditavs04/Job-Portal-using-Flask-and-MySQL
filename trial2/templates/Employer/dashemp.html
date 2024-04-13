@@ -38,14 +38,17 @@
                 <p class="card-text">You have 2 active job posts</p>
               </div>
             </a>
-            <a href="applicants.html" class="card ats">
+            <a href="{{ url_for('employer.applicants') }}" class="card ats">
               <div class="card-body">
                 <h5 class="card-title">Job Applicants</h5>
-                <p class="card-text">ATS</p>
+                <p class="card-text">You have {{ total_apps }}  job applicants</p>
               </div>
             </a>
           </div>
-      
+          <div class="text-center profile-builder">
+            <!-- Anchor tag linking to educationdetails.html -->
+            <a href="{{ url_for('employer.jobpost') }}"   class="btn btn-primary">Post a job</a>
+    
     </body>
     </html>
    

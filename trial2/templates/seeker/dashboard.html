@@ -27,19 +27,19 @@
         <div id="progress-bar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" ></div>
       </div>
       <div class="dashboard-content">
-        <a href="applied_jobs.html" class="card applied-jobs">
+        <a href="{{ url_for('seeker.appliedjobs') }}" class="card applied-jobs">
           <div class="card-body">
             <h5 class="card-title">Applied Jobs</h5>
-            <p class="card-text">You have applied to 3 jobs</p>
+            <p class="card-text">You have applied to {{ total_apps }} jobs</p>
           </div>
         </a>
         <a href="saved_jobs.html" class="card saved-jobs">
           <div class="card-body">
-            <h5 class="card-title">Saved Jobs</h5>
-            <p class="card-text">You have 2 saved jobs</p>
+            <h5 class="card-title">ATS</h5>
+            <p class="card-text">You have 2 Applications in processing</p>
           </div>
         </a>
-        <a href="job_offer.html" class="card job-offer">
+        <a href="{{ url_for('portal.joboffer') }}" class="card job-offer">
           <div class="card-body">
             <h5 class="card-title">Job Offer</h5>
             <p class="card-text">Congratulations! You've received a job offer</p>
@@ -48,10 +48,16 @@
       </div>
       <div class="text-center profile-builder">
         <!-- Anchor tag linking to educationdetails.html -->
+        <a href="{{ url_for('seeker.view_profile') }}"  id="viewprofile" class="btn btn-primary">View Profile</a>
+
+      <!-- Add the progress bar -->
+        </div>
+      <div class="text-center profile-builder">
+        <!-- Anchor tag linking to educationdetails.html -->
         <a href="{{ url_for('seeker.checkfill') }}"  id="profile-builder-btn" class="btn btn-primary">Profile Builder</a>
 
       <!-- Add the progress bar -->
-
+        
 
 <!-- Include the JavaScript code -->
 <script>
@@ -92,7 +98,7 @@
       .catch(error => console.error("Error:", error));
   }
 </script>
-  
+</div>
 </body>
 </html>
 </div>

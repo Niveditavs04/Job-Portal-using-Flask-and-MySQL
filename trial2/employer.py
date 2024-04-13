@@ -3,7 +3,7 @@ import mysql.connector
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for, jsonify
 )
-from werkzeug.security import check_password_hash, generate_password_hash
+from werkzeug.exceptions import abort
 
 from trial2.user import login_required
 from trial2.models import Model1,Model2,Model3
@@ -114,12 +114,13 @@ def jobpost():
     if request.method == 'POST':
         # Retrieve form data
         selected_job = request.form.get('job')
-        selected_skill = request.form.get('skill')
+        
         user_account_id = g.user[0]  # Assuming g.user contains the current user's information
         skill_level = request.form.get('skill_level')
         companyName = request.form['companyName']
         jobdesc = request.form['jobDescription']
         addressZip=request.form['addressZip']
+        selected_skills = request.form.getlist('skill')
         skill_level_id = 1 if skill_level == 'Basic' else 2 if skill_level == 'Medium' else 3
         addressStreet = request.form['addressStreet']
         addressCity = request.form['addressCity']
@@ -132,13 +133,7 @@ def jobpost():
         model2.commit()
         cursor.close()
 
-        cursor3 = model3.get_cursor()
-
-        cursor3.execute("SELECT id FROM seeker_skill_set where skill_set_name=%s", (selected_skill,))
-        skill_id = cursor3.fetchone()[0]
-        model3.commit()
-        cursor3.close()
-
+        
         cursor4 = model4.get_cursor()
         cursor4.execute("SELECT MAX(pid) FROM job_post")
         max_id = cursor4.fetchone()[0]
@@ -159,13 +154,28 @@ def jobpost():
         insert_query = "INSERT INTO job_post (pid, posted_by, job_type_id,company_id,is_cnm_hid,jobdesc,joblocid,is_active,createdt) VALUES (%s, %s, %s,%s, %s, %s,%s, %s, CURDATE())"
         values = (new_id, user_account_id ,jt_id,comp_id,'y',jobdesc,newj_id,'y')
         cursor4.execute(insert_query, values)
-        insert_query = "INSERT INTO job_post_skillset (skill_setid, job_post_id, skill_level) VALUES (%s, %s, %s)"
-        values = (skill_id,new_id,skill_level_id)
-        cursor4.execute(insert_query, values)
-
         model4.commit()
         cursor4.close()
+        if selected_skills:
+                # Update job post skillset
+                cursor3 = model3.get_cursor()
+                 # Prepare a string with placeholders for each selected skill
+                placeholders = ', '.join(['%s'] * len(selected_skills))
+                # Execute the query with the selected skills
+                cursor3.execute("SELECT id FROM seeker_skill_set WHERE skill_set_name IN ({})".format(placeholders), selected_skills)
+                skill_ids = [result[0] for result in cursor3.fetchall()]
+                model3.commit()
+                cursor3.close()
+                cursor4 = model4.get_cursor()
+                for skill_id in skill_ids:
+                    cursor4.execute("Insert into job_post_skillset  (skill_setid, skill_level, job_post_id) VALUES(%s,%s,%s)",
+                        (skill_id, skill_level_id, new_id))
+                model4.commit()
+                cursor4.close()
+
+        
         #session['has_posted_job'] = True
+        
         return redirect(url_for('employer.dashemp'))
     
     jobs=jobtypeget()
@@ -183,16 +193,55 @@ def get_total_posts_by_user_id(user_id):
     total_posts = cursor.fetchone()[0]  # Fetch the count from the first column of the first row
     cursor.close()  # Close cursor
     return total_posts
-
+def totapplicants(user_id):
+    cursor = model4.get_cursor()
+    query="select count(*) from job_post_activity where job_post_id in(select pid from job_post where posted_by=%s);"
+    cursor.execute(query, (user_id,))
+    apps = cursor.fetchone()[0]  # Fetch the count from the first column of the first row
+    cursor.close()  # Close cursor
+    return apps
 @bp.route('/dashemp', methods=('GET', 'POST'))
 @login_required
 def dashemp():
     user_id = g.user[0]  # Assuming g.user[0] contains the user ID
     
     total_posts = get_total_posts_by_user_id(user_id)  # Function to retrieve total posts by user ID from the database
-
-    return render_template('Employer/dashemp.html', total_posts=total_posts)
+    apps=totapplicants(user_id)
+    return render_template('Employer/dashemp.html', total_posts=total_posts,total_apps=apps)
     
-    
+def get_all_applicants(user_id):
+    cursor = model4.get_cursor()
+    query = """
+        SELECT 
+            jp.pid,
+            l.uacid,
+            l.apply_date,l.activity_id,
+            c.status_desc
+        FROM 
+            job_post jp
+        INNER JOIN 
+            job_post_activity l ON jp.pid = l.job_post_id
+        INNER JOIN
+            job_application_status c ON l.job_app_status_id = c.id
+        WHERE 
+            jp.posted_by = %s
+        ORDER BY 
+            l.activity_id
+    """
+    value = (user_id,)  # Need to pass parameters as a tuple
+    cursor.execute(query, value)
+    total_applicants = cursor.fetchall()
+    cursor.close()  # Close cursor
 
+    if not total_applicants:  # Check if the list is empty
+        abort(404, f"No applicants found for user ID {user_id}.")
+
+    return total_applicants
+
+@bp.route('/applicants', methods=('GET', 'POST'))
+@login_required
+def applicants():
+    user_id = g.user[0]
+    total_applicants=get_all_applicants(user_id)
+    return render_template('Employer/applicants.html', total_applicants=total_applicants)
 

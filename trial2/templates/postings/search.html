@@ -12,12 +12,16 @@
                 <article class="post">
                     
                         <div>
-                            <h1>{{ post[0] }}</h1>
+                            <h1>Post ID: {{ post[0] }}</h1>
                             <div class="about">{{ post[1] }}</div>
+                           
                         </div>
-                        <a class="action" href="{{ url_for('portal.apply_job') }}">Apply</a>
-                    
+                        <form action="/apply_job/{{ post[0] }}" method="post">
+                            <button type="submit">Apply</button>
+                        </form>
                     <p class="body">{{ post[2] }}</p>
+                    <a class="action" href="/viewjp/{{ post[0] }}">Click here to view job details!</a>
+            
                 </article>
                 {% if not loop.last %}
                     <hr>

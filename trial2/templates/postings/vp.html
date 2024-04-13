@@ -1,18 +1,16 @@
-{% extends "base.html" %}
-
-{% block title %}Job Portal Login{% endblock %}
-
-{% block content %}
-<div class="profilepage">
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Details</title>
+    <title>Job Offers</title>
+    <!-- Include your CSS stylesheets here -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='jobsearch.css') }}">
 </head>
 <body>
-    <h1>Seeker profile</h1>
+<div class="vppage">
+
+    <h1>APPLICANT profile</h1>
   
         <div class="profile-card">
     <!-- You Card -->
@@ -52,12 +50,8 @@
     </div>
 
     <!-- Include your JavaScript code here -->
-            <a class="action" href="{{ url_for('seeker.update_profile') }}">Edit</a>
+           
         </div>
-        
 
 </body>
 </html>
-
-</div>
-{% endblock %}
