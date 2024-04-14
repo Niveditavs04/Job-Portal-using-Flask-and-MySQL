@@ -1,6 +1,8 @@
 CREATE database db3;
 USE db3;
-CREATE TABLE job_seeker_profile (
+
+  
+   CREATE TABLE job_seeker_profile (
     user_account_id INT PRIMARY KEY,
     first_name VARCHAR(255) NOT NULL,
     last_name VARCHAR(255) NOT NULL,
@@ -49,16 +51,76 @@ CREATE TABLE profile_visit_log (
     FOREIGN KEY (user_account_id) REFERENCES db1.user_account(id)
 );
 
-CREATE TABLE seeker_skill_set (
+CREATE TABLE skill_set (
     user_account_id INT, 
     skill_set_id INT,
     skill_level INT CHECK (skill_level >= 1 AND skill_level <= 10),
     PRIMARY KEY(user_account_id,skill_set_id),
     FOREIGN KEY (user_account_id) REFERENCES db1.user_account(id),
-    FOREIGN KEY (skill_set_id) REFERENCES skill_set(id)
+    FOREIGN KEY (skill_set_id) REFERENCES seeker_skill_set(id)
 );
 
-CREATE TABLE skill_set(
+CREATE TABLE seeker_skill_set(
     id int primary key,
     skill_set_nam varchar(50));
 
+INSERT INTO seeker_skill_set (id, skill_set_name) VALUES 
+(1, 'Language Proficiency'),
+(2, 'Employee Relations Mnagement'),
+(3, 'Coaching'),
+(4, 'Performance Management'),
+(5, 'Communication Skills'),
+(6, 'HRIS (Human Resources Information System)'),
+(7, 'Talent Acquisition'),
+(8, 'Payroll Management'),
+(9, 'Organizational Development'),
+(10, 'Change Management'),
+(11, 'Technical Support'),
+(12, 'Software Development'),
+(13, 'Database Management'),
+(14, 'Network Administration'),
+(15, 'Cybersecurity'),
+(16, 'Data Analysis'),
+(17, 'Financial Reporting'),
+(18, 'Auditing'),
+(19, 'Taxation'),
+(20, 'Financial Analysis');
+
+
+SELECT 
+    jp.user_account_id,
+    jp.first_name,
+    jp.last_name,
+    CONCAT(jp.current_salary, ', ', jp.currency, ', ', jp.is_annually_monthly) AS Salary,
+    CONCAT(c.certificate_degree_name,', ', c.major, ', ', c.institute_university_name) as degree,
+    c.percentage,c.cgpa,c.start_date,c.completion_date,
+    l.description,l.is_current_job, l.start_date, l.end_date, l.job_title, l.job_location_city, l.job_location_country,
+    l.job_location_state,s.skill_level,
+    GROUP_CONCAT(f.skill_set_name) AS skill_set_names  -- Concatenate all skill set names into one column
+FROM 
+    job_seeker_profile jp
+INNER JOIN
+    education_detail c ON jp.user_account_id = c.user_account_id
+INNER JOIN 
+    experience_detail l ON jp.user_account_id = l.user_account_id
+INNER JOIN 
+    skill_set s ON jp.user_account_id = s.user_account_id
+INNER JOIN 
+    seeker_skill_set f ON s.skill_set_id = f.id
+WHERE 
+    jp.user_account_id = 3
+GROUP BY 
+    jp.user_account_id,jp.first_name,jp.last_name,jp.current_salary,jp.currency,jp.is_annually_monthly,
+    c.certificate_degree_name,c.major,c.institute_university_name,c.percentage,c.cgpa,c.start_date,c.completion_date,
+    l.description, l.is_current_job, l.start_date, l.end_date, l.job_title, l.job_location_city, l.job_location_country,
+    l.job_location_state, s.skill_level;
+
+SELECT
+    COLUMN_NAME,
+    REFERENCED_TABLE_NAME,
+    REFERENCED_COLUMN_NAME
+FROM
+    INFORMATION_SCHEMA.KEY_COLUMN_USAGE
+WHERE
+    TABLE_NAME = 'skill_set'
+    AND TABLE_SCHEMA = 'db3';
