@@ -36,7 +36,7 @@ apply_date date);
     primary key(skill_setid,job_post_id)
     );
     alter table job_post_skillset
-    add foreign key(skill_setid) references db3.skill_set(id),
+    add foreign key(skill_setid) references db3.seeker_skill_set(id),
     add foreign key(job_post_id) references job_post(pid);
 
 
@@ -76,7 +76,7 @@ FOREIGN KEY (userid) REFERENCES db1.user_account(id)
 ALTER TABLE job_post_activity
 ADD FOREIGN KEY (job_app_status_id) REFERENCES job_application_status(id),
 ADD FOREIGN KEY (job_post_id) REFERENCES job_post(pid),
-ADD FOREIGN KEY (uacid) REFERENCES db3.seeker_skill_set(user_account_id);
+ADD FOREIGN KEY (uacid) REFERENCES db3.skill_set(user_account_id);
 
  Alter table job_post
   add foreign key(posted_by) references db1.user_account(id),
