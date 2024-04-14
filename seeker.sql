@@ -62,7 +62,7 @@ CREATE TABLE skill_set (
 
 CREATE TABLE seeker_skill_set(
     id int primary key,
-    skill_set_nam varchar(50));
+    skill_set_name varchar(50));
 
 INSERT INTO seeker_skill_set (id, skill_set_name) VALUES 
 (1, 'Language Proficiency'),
