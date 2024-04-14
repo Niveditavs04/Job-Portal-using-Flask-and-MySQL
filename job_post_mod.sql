@@ -67,7 +67,7 @@ jpactivity_id int,
 jpaction_id int,
 actiondt date ,
 userid int,
-FOREIGN KEY (jpactivity_id) REFERENCES job_post_activity(id),
+FOREIGN KEY (jpactivity_id) REFERENCES job_post_activity(activity_id),
 FOREIGN KEY (jpaction_id) REFERENCES job_app_action(id),
 FOREIGN KEY (userid) REFERENCES db1.user_account(id)
 );
