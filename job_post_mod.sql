@@ -5,7 +5,7 @@
 
 
 create table job_post_activity(
-id int primary key,
+activity_id INT AUTO_INCREMENT PRIMARY KEY ,
 uacid int ,
 job_app_status_id int,
 job_post_id int,
