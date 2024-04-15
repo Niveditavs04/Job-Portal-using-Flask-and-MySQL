@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Applicants</title>
+    <!-- Include your CSS stylesheets here -->
+    <style>
+        /* Resetting default margins and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Basic styling for body */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+  }
+  
+  /* Styling for heading */
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Align items to the bottom */
+    height: 100vh; /* Set the height of the container to viewport height */
+  }
+  /* Styling for individual post */
+  .post {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Styling for job post ID */
+  .post h2 {
+    margin-bottom: 10px;
+  }
+  
+  /* Styling for applicant details */
+  .post ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  /* Styling for applicant detail items */
+  .post ul li {
+    margin-bottom: 10px;
+  }
+  
+  /* Styling for action link */
+  .action {
+    display: block;
+    text-decoration: none;
+    color: #007bff;
+    margin-top: 10px;
+  }
+  
+  .action:hover {
+    text-decoration: underline;
+  }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div><img src="appli.jpeg" alt=""></div>
+              <div class="dashboard-header">
+                <h1>Job Applicant</h1>
+              </div>
+    <table border="">
+        <thead>
+            <tr>
+                <th>Job Post ID</th>
+                <th>Action</th>
+                <th>Activity ID</th>
+                <th>Applicant ID</th>
+                <th>Apply Date</th>
+                <th>Status</th>
+                <th>Review</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in total_applicants %}
+            <tr>
+                <td>{{ post[0] }}</td>
+                <td><a class="action" href="/viewjp/{{ post[0] }}">View Job Details</a></td>
+                <td>{{ post[3] }}</td>
+                <td>{{ post[1] }}</td>
+                <td>{{ post[2] }}</td>
+                <td>{{ post[4] }}</td>
+                <td><a class="action" href="/review_app/{{ post[1] }}/{{ post[3] }}">Review</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Include your JavaScript code here -->
+</body>
+</html>

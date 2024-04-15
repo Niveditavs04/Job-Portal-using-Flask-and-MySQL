@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Offers</title>
+    <!-- Include your CSS stylesheets here -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='jobsearch.css') }}">
+</head>
+<body>
+<div class="vppage">
+
+    <h1>APPLICANT profile</h1>
+  
+        <div class="profile-card">
+    <!-- You Card -->
+    <div class="profile-card">
+        <h2>You</h2>
+        <p><strong>User Account ID:</strong> {{ profile[0] }}</p>
+        <p><strong>First Name:</strong> {{ profile[1] }}</p>
+        <p><strong>Last Name:</strong> {{ profile[2] }}</p>
+         </div>
+            <!-- Education Details Card -->
+    <div class="profile-card">
+        <h2>Education Details</h2>
+        <p><strong>Degree:</strong> {{ profile[4] }}</p>
+        <p><strong>Percentage:</strong> {{ profile[5]}}</p>
+        <p><strong>CGPA:</strong> {{ profile[6] }}</p>
+        <p><strong>Start Date:</strong> {{ profile[7] }}</p>
+        <p><strong>Completion Date:</strong> {{ profile[8] }}</p>
+    </div>
+
+    <!-- Experience Details Card -->
+    <div class="profile-card">
+        <h2>Experience Details</h2>
+        <p><strong>salary of current job:</strong> {{ profile[3] }}</p>
+        <p><strong>Description:</strong> {{ profile[9] }}</p>
+        <p><strong>Current Job:</strong> {{ profile[10] }}</p>
+        <p><strong>Start Date:</strong> {{ profile[11] }}</p>
+        <p><strong>End Date:</strong> {{ profile[12] }}</p>
+        <p><strong>Job Title:</strong> {{ profile[13] }}</p>
+        <p><strong>Job Location:</strong> {{ profile[14] }}, {{ profile[15]}}, {{ profile[16] }}</p>
+    </div>
+
+    <!-- Skill Sets Card -->
+    <div class="profile-card">
+        <h2>Skill Sets</h2>
+        <p><strong>Skill Level:</strong> {{ profile[17] }}</p>
+        <p><strong>Skill Set Names:</strong> {{ profile[18] }}</p>
+    </div>
+
+    <!-- Include your JavaScript code here -->
+           
+        </div>
+
+</body>
+</html>

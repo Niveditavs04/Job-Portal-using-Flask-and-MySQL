@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Offers</title>
+    <!-- Include your CSS stylesheets here -->
+   <style>
+    /* Resetting default margins and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Basic styling for body */
+ /* styles.css */
+body {
+  background-image: url(../static/bluw.avif);
+    background-size: cover; /* Adjust as needed */
+    background-position: center; /* Adjust as needed */
+}
+
+  
+  /* Styling for page container */
+  .sjpage {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    
+  }
+  
+  /* Styling for heading */
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Styling for individual job offer */
+  .post {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  /* Styling for job offer title */
+  .post h1 {
+    margin-bottom: 10px;
+  }
+  
+  /* Styling for job offer details */
+  .post .about {
+    color: #888;
+    margin-bottom: 10px;
+  }
+  
+  /* Styling for job offer body */
+  .post .body {
+    margin-bottom: 15px;
+  }
+  
+  /* Styling for action link */
+  .action {
+    display: block;
+    text-decoration: none;
+    color: #007bff;
+    margin-top: 10px;
+  }
+  
+  .action:hover {
+    text-decoration: underline;
+  }
+  
+  /* Styling for apply button */
+  button[type="submit"] {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #218838;
+  }
+   </style>
+</head>
+<body>
+<div class="sjpage">
+ 
+    
+    <h1>Job Offerss</h1>
+    {% if posts %}
+        <ul>
+            {% for post in posts %}
+            <article class="post">
+                
+                    <div>
+                        <h1>Post ID: {{ post[0] }}</h1>
+                        <div class="about">{{ post[1] }}</div>
+                       
+                    </div>
+                    <form action="/apply_job/{{ post[0] }}" method="post">
+                        <button type="submit">Apply</button>
+                    </form>
+                <p class="body">{{ post[2] }}</p>
+                <a class="action" href="/viewjp/{{ post[0] }}">Click here to view job details!</a>
+        
+            </article>
+            {% if not loop.last %}
+                <hr>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No job offers found.</p>
+    {% endif %}
+</div>
+
+</body>
+</html>

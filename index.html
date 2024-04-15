@@ -1,144 +1,404 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Job Portal</title>
-<link rel="stylesheet" href="home.css">
-</head>
-<body  class="background">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+       
+        
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-<header>
-  <nav>
-    <ul class="nav-links">
-      <li><a href="#">Home</a></li>
-      <li><a href="index1.html">Login</a></li>
-      <li><a href="#">Contact Us</a></li>
-    </ul>
-  </nav>
-</header>
 
-<section class="main-content">
-  <h1>Welcome to Job Portal</h1>
-  <p>Search Online Jobs!!!</p>
-  <form action="">
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
 
-   <div class="autocomplete-wrapper">
-        <input type="text" id="jobTitleInput" placeholder="Enter Job Title">
-      </div>
-  
-     <!---- <ul class="autocomplete-list">
-        <li>
-          <button>Software Development</button>
-        </li>
-        <li>
-          <button>Web Development</button>
-        </li>
-        <li>
-          <button>Advertising</button>
-        </li>
-       </ul>-->
-   
+
+#logo img{
+    width: 240px;
+    height: 60px;
+    
+}
+
+.nav-container{
+    height: 100px;
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+    margin: 0px 10px 0px 0px;
+    font-size: 20px;
+    /* border: 2px solid black; */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    transition: all 0.3s ease;
+    background: #fff;
+    border-bottom: 1px solid rgba(0,0,0,.14);
+} 
+
+.navbar{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    width: 10cm;
+    height:10cm;
+}
+
+.navbar button{
+    all: unset;
+  cursor: pointer;
+  height: 60px;
+  border: 1px solid rgba(0,0,0,.14);
+  border-radius: 12px;
+  padding: 8px 24px 7px;
+  font-weight: 500;
+  line-height: 24px;
+  text-decoration: none;
+  transition: all .3s;
+  display: inline-block;
+  margin: 0px 10px 0px 0px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+  }   
+
+.navbar li{
+    display: flex;
+    /* padding: 0px 20px 0px 20px; */
+    margin-left: 4px;
+    margin-right: 4px;
+    padding: 11px 16px;
+    height: 70px;
+    align-items: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+
+
+.nav-btn button{
+  all: unset;
+  cursor: pointer;
+  height: 40px;
+  border: 1px solid rgba(0,0,0,.14);
+  border-radius: 12px;
+  padding: 8px 24px 7px;
+  font-weight: 500;
+  line-height: 24px;
+  text-decoration: none;
+  transition: all .3s;
+  display: inline-block;
+  margin: 0px 10px 0px 0px;
  
-  <button type="submit" class="btn-submit">Search</button>
- </form>
-  <div class="user-type">
-    <a href="index1.html"><button>I am Job Seeker</button></a>
-    <a href="index2.html"><button>I am Employer</button></a>
-  </div>
-</section>
+}
 
-<!-- Using Cards with Fade-in Effect -->
-<div class="business-streams">
-  <div class="stream-card it" data-stream="it">
-      <div class="dropdown">
-        <button class="dropbtn">Information Technology</button>
-        <div class="dropdown-content">
-          <a href="#">Software Development</a>
-          <a href="#">Web Development</a>
-          <a href="#">Mobile App Development</a>
-          <a href="#">Data Science</a>
-          <a href="#">Cybersecurity</a>
-          <!-- Add more sub-branches as needed -->
-        </div>
-      </div>
-    </div>
-    
-  <div class="stream-card finance" data-stream="finance">
-      <div class="dropdown">
-        <button class="dropbtn">Finance and Accounting</button>
-        <div class="dropdown-content">
-          <a href="#">Financial Analysis</a>
-          <a href="#">Banking</a>
-          <a href="#">Investment Management</a>
-          <!-- Add more sub-branches as needed -->
-        </div>
-      </div>
-    </div>
-  <!-- Add cards for other business streams -->
-  <div class="stream-card sales" data-stream="sales">
-      <div class="dropdown">
-        <button class="dropbtn">Sales and Marketing</button>
-        <div class="dropdown-content">
-          <a href="#">Sales Representative</a>
-          <a href="#">Marketing Manager</a>
-          <a href="#">Digital Marketing Specialist</a>
-          <a href="#">Advertising</a>
-          <a href="#">Public Relations</a>
-          <!-- Add more sub-branches as needed -->
-        </div>
-      </div>
-    </div>
-    
-    <div class="stream-card teaching" data-stream="education">
-      <div class="dropdown">
-        <button class="dropbtn">Education</button>
-        <div class="dropdown-content">
-          <a href="#">Teaching</a>
-          <a href="#">Academic Administration</a>
-          <a href="#">Education Consultant</a>
-          <a href="#">Instructional Design</a>
-          <a href="#">Special Education</a>
-          <!-- Add more sub-branches as needed -->
-        </div>
-      </div>
-    </div>
-    
-    <!--div class="stream-card tourism" data-stream="hospitality">
-      <div class="dropdown">
-        <button class="dropbtn">Hospitality and Tourism</button>
-        <div class="dropdown-content">
-          <a href="#">Hotel Management</a>
-          <a href="#">Event Planning</a>
-          <a href="#">Travel Agent</a>
-          <a href="#">Restaurant Management</a>
-          <a href="#">Tourism Marketing</a>
-          <!-- Add more sub-branches as needed -->
-        </div>
-      </div>
-    </div -->
-    
-    <div class="stream-card hr" data-stream="hr">
-      <div class="dropdown">
-        <button class="dropbtn">Human Resources (HR)</button>
-        <div class="dropdown-content">
-          <a href="#">HR Generalist</a>
-          <a href="#">Recruiter</a>
-          <a href="#">Training and Development</a>
-          <a href="#">Compensation and Benefits</a>
-          <a href="#">HR Manager</a>
-          <!-- Add more sub-branches as needed -->
-        </div>
-      </div>
-    </div>
-</div>
+.nav-btn button:nth-child(2){
+    border: none;
+    background-color: #111;
+    color: #fff;
+}
 
-<footer>
-  <p>&copy; 2024 Job Portal. All rights reserved.</p>
-</footer>
+.navbar li:hover {
+    border: 1px solid rgba(236,46,58,0);
+    border-radius: 12px;
+    border: 1px solid #ec2e3a;
+    background-color: #ffdfda;
+    color: #ec2e3a;
+    box-shadow: 0 0 0 4px rgba(236,46,58,.25);
+}
+.nav-btn button:hover {
+    border: 1px solid rgba(236,46,58,0);
+    border-radius: 12px;
+    border: 1px solid #ec2e3a;
+    background-color: #ffdfda;
+    color: #ec2e3a;
+    box-shadow: 0 0 0 4px rgba(236,46,58,.25);
+}
 
-<!-- Include JavaScript -->
-<script src="a.js"></script>
+#signin:hover{
+    border-color: #ce0026;
+    background: #ce0026;
+    color: #fff;
+    box-shadow: 0 0 0 4px rgba(236,46,58,.25);
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main-container{
+    width: 100%;
+    height: 450px;
+    text-align: center;
+}
 
+.main-container h1{
+    margin-top: 200px;
+    /* word-spacing: 20px; */
+    line-height: 70px;
+    font-size: 80px;
+    font-weight: 600;
+}
+.main-container p{
+    font-size: 25px;
+    margin-bottom: 20px;
+    color: #ec2e3a;
+    font-weight: 600;
+}
+
+.main-container h1 span{
+    color: #ec2e3a;
+}
+
+.main-container input{
+    width: 15%;
+    font-size: 18px;
+    padding: 5px 10px 5px 10px;
+    margin: 0px 15px 0px 15px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #222;
+    height: 45px;
+    /* border-radius: 12px; */
+}
+.srchbar{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    
+}
+.srchbar i {
+    font-size: 25px;
+    cursor: pointer;
+    color: #ec2e3a;
+}
+
+/* .main-container input:hover{
+    box-shadow: ;
+} */
+
+.job-title{
+    /* background-color: #000; */
+    /* border: 2px solid #000;   */
+    height: 50vh;
+    width: 80%;
+    margin: 0 50px 0 50px;
+    display: flex;
+    justify-content: center;
+    flex-wrap:wrap;
+}
+
+.job-title div{
+    list-style: none;
+    border: 1px solid rgba(0,0,0,.14);
+    border-radius: 12px;
+    margin-left: 10px;
+    margin-right: 4px;
+    padding: 11px 16px;
+    height: 50px;
+    align-items: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-size: 20px;
+}
+
+.job-title div:hover{
+    border: 1px solid rgba(236,46,58,0);
+    border-radius: 12px;
+    border: 1px solid #ec2e3a;
+    background-color: #ffdfda;
+    color: #ec2e3a;
+    box-shadow: 0 0 0 4px rgba(236,46,58,.25);
+    /* zoom in */
+    z-index: 20;
+    transform: scale(1.3);
+}
+
+.Job-card{
+    width: 80%;
+}
+
+main h3{
+    margin: 20px 0px 20px 0px;
+    font-size: 45px;
+    font-weight: 600;
+    color: #ec2e3a;
+}
+.card{
+    border: 2px solid rgba(0,0,0,.25);
+    height: 300px;
+    border-radius: 12px;
+    margin: 20px 20px 20px 20px;
+    padding: 10px 20px 20px 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: all .4s ease;
+    /* flex-wrap: wrap; */
+}
+.card h4{
+    font-size: 25px;
+    font-weight: 600;
+    color: #ec2e3a;
+}
+.card p{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.card #descrition{
+    margin-top: 10px;
+    font-size: 18px;
+    color: rgba(0,0,0,1);
+}
+
+.btns{
+    display: flex;
+    /* background-color: #ffdfda; */
+    justify-content: flex-end;
+}
+
+.card button{
+  all: unset;
+  cursor: pointer;
+  height: 40px;
+  border-radius: 12px;
+  padding: 8px 24px 7px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all .3s;
+  display: inline-block;
+  margin: 15px 10px 0px 0px;
+  border: none;
+  background-color: #111;
+  color: #fff;
+}
+.card button:hover{
+    border-color: #ce0026;
+    background: #ce0026;
+    color: #fff;
+    box-shadow: 0 0 0 4px rgba(236,46,58,.25);
+}
+
+/* .card:hover{
+    transform: scale(1.2);
+} */
+
+/* footer */
+
+footer{
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    /* position: fixed; */
+    bottom: 0;
+    width: 100%;
+    font-size: 18px;
+}
+
+
+
+        </style>
+  <!--  <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="main.css">-->
+</head>
+
+<body>
+    <header>
+        <!-- Desingn NAvbar here -->
+        <div class="nav-container">
+            <div class="img"> <img src="JOB PORTAL.png" height="100" width="170" alt=""></div>
+         <!--    <div > <h1>JOB PORTAL</h1></div>-->
+           <!-- <div id="logo"><img src="wellfoun.svg" srcset=""></div> -->
+            <nav class="navbar">
+                <li><a href=""><button>Job seekers</button></a></li>
+                <li><a href=""><button>Employer</button></a></li>
+                <!-- <li><a href=""></a>For job seekers</li> -->
+            </nav>
+            <div class="nav-btn">
+               <a href="login.html"> <button >Log In</button></a>
+               <a href="register.html"> <button id="signin">Sign In</button></a>
+            </div>
+        </div>
+        <div>
+    </header>
+    <main class="main">
+        <div class="main-container">
+            <h1>Welcome to Job <span>Portal:</span></h1>
+            <p>Find Your Dream Job here...</p>
+            <div class="srchbar">
+                <input type="text" placeholder="Enter Job Title">
+                <input type="text" placeholder="Enter Company Name">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+        </div>
+        <div class="job-title">
+            <!-- here Job titile devliver through Javascript -->
+        </div>
+        <h3>HIRING COMPANIES</h3>
+        <!-- Likewise I get Job Title from Dacend via Javascript and Show on Frontemd...You Have to Get also details of Job for JobCard and render on Frontend.. -->
+        <div class="Job-card">
+            <div class="card">
+                <h4 id="cardtitle"> Software Engineer</h4>
+                <p id="company">Amazon</p>
+                <p id="descrition">Amazon.com strives to be Earth's most customer-centric company where people can find and discover virtually anything they want to buy online. By giving customers more of what they want - low prices, vast selection, and convenience - Amazon.com continues to grow and evolve as a world-class e-commerce platform. Amazon's evolution from Web site to e-commerce partner to development platform is driven by the spirit of innovation that is part of the company's DNA. The world's brightest technology minds come to Amazon.com to research and develop technology.</p>
+                <div class="btns">
+                    <button><a href="https://www.amazon.jobs/en/">Visit Amazon</a></button>
+                </div>
+                
+            </div>
+            <div class="card">
+                <h4 id="cardtitle">Devops Engineer</h4>
+                <p id="company">Adobe</p>
+                <p id="descrition">All the reasons to bring your career here.
+                    Join us to reinvent how people create and brands succeed. At Adobe, you’ll help make software that shows the world what digital experiences can be, from e-signatures to blockbuster movies to ecommerce sites and more. Better still, you’ll be surrounded by a community guided by core values that inspire creativity, promote equality, and make you feel right at home..</p>
+                    <div class="btns">
+                        <button><a href="https://www.adobe.com/careers.html">Visit Adobe</a></button>
+                    </div>
+                    
+            </div>
+            <div class="card">
+                <h4 id="cardtitle">Cloud Engineer</h4>
+                <p id="company">Google</p>
+                <p id="descrition">Google LLC is an American multinational corporation and technology company focusing on online advertising, search engine technology, cloud computing, computer software, quantum computing, e-commerce, consumer electronics, and artificial intelligence.</p>
+                <div class="btns">
+                    <button><a href="https://www.google.com/about/careers/applications/jobs/results/?company=Google&company=YouTube&jld=20&jlo=en_US&location=20.593684%3A78.96288000000004%3AIndia%3AIN%3A%3A1518.7802295086196%3ACOUNTRY%3A%3A%3A%3A%3A%3A&sort_by=date">Apply to Google</a></button>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <footer>&copy; 2024 Job Portal. All rights reserved.</footer>
+
+    <script>
+        // Fetch Here Job Profiles from backend with id use js Objects key-value Pair and handle eve Events
+        const jobtitles = ["Software Development", "Web Development", "Mobile App Development", "Data Science", "Cybersecurity", "Devops", "AWS Cloud Engineer", "MERN Developer", "Java Full Stack Developer","Database Engineer", "Frontend Developer", "Backend Developer","Finance and Accounting","Financial Analysis","Banking","Investment Management","Sales and Marketing","Sales Representatives","Marketing Manager","Digital Marketing Specialist","Advertising","Public Relations","Education","Teaching","Academic Administration","Education Consultant","Instructional Design","Special Education","HR Generalist","Recruiter","Training and Development","Compensation and Benefits","HR Managers"];
+      
+        const container = document.querySelector(".job-title");
+        
+        //here by  Using ForEach loop Array i traverse each elemt in array and render Job profiles on Frontend(DOM Manipulation)
+
+        jobtitles.forEach((string) => {
+          // Create a new div element
+          var div = document.createElement("div");
+
+          // Set the text content to the current string
+          div.textContent = string;
+          // Append the div to the container
+          container.appendChild(div);
+        });
+
+        container.style.height = container.scrollHeight + "px";
+      </script>
 </body>
+
 </html>

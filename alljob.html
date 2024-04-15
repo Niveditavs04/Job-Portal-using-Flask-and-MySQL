@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block title %}Job Portal Login{% endblock %}
+
+{% block content %}
+
+<div class="img">
+    
+</div>
+<div class="employeralljobspage">
+    <h1>Job Post Details</h1>
+    <table class="job-details-table">
+        <tbody>
+            {% for post in posts %}
+            <tr>
+                <th>Post ID:</th>
+                <td>{{ post[0] }}</td>
+            </tr>
+            <tr>{% extends "base.html" %}
+
+                {% block title %}Job Portal Login{% endblock %}
+                
+                {% block content %}
+                <style>
+                    body {
+                        background-image: url(../static/bluw.avif); /* Specify the path to your image */
+                        background-size: cover; /* Adjust as needed */
+                        background-position: center; /* Adjust as needed */
+                    }
+                </style>
+                
+                <div class="img">
+                    
+                </div>
+                <div class="employeralljobspage">
+                    <h1>Job Post Details</h1>
+                    <table class="job-details-table">
+                        <tbody>
+                            {% for post in posts %}
+                            <tr>
+                                <th>Post ID:</th>
+                                <td>{{ post[0] }}</td>
+                            </tr>
+                            <tr>
+                                <th>Created Date:</th>
+                                <td>{{ post[1] }}</td>
+                            </tr>
+                            <tr>
+                                <th>Job Description:</th>
+                                <td>{{ post[2] }}</td>
+                            </tr>
+                            <tr>
+                                <th>Company Name:</th>
+                                <td>{{ post[3] }}</td>
+                            </tr>
+                            <tr>
+                                <th>Job Type:</th>
+                                <td>{{ post[4] }}</td>
+                            </tr>
+                            <tr>
+                                <th>Address:</th>
+                                <td>{{ post[5] }}</td>
+                            </tr>
+                            <tr>
+                                <th>Skill Set Names:</th>
+                                <td>{{ post[6] }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <form action="/delete_post/{{ post[0] }}" method="post">
+                                        <button type="submit">Delete</button>
+                                    </form>
+                                    <a class="action" href="/update_post/{{ post[0] }}">Edit</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    
+                </div>
+                {% endblock %}
+                
+                <th>Created Date:</th>
+                <td>{{ post[1] }}</td>
+            </tr>
+            <tr>
+                <th>Job Description:</th>
+                <td>{{ post[2] }}</td>
+            </tr>
+            <tr>
+                <th>Company Name:</th>
+                <td>{{ post[3] }}</td>
+            </tr>
+            <tr>
+                <th>Job Type:</th>
+                <td>{{ post[4] }}</td>
+            </tr>
+            <tr>
+                <th>Address:</th>
+                <td>{{ post[5] }}</td>
+            </tr>
+            <tr>
+                <th>Skill Set Names:</th>
+                <td>{{ post[6] }}</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <form action="/delete_post/{{ post[0] }}" method="post">
+                        <button type="submit">Delete</button>
+                    </form>
+                    <a class="action" href="/update_post/{{ post[0] }}">Edit</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+</div>
+{% endblock %}
+
+

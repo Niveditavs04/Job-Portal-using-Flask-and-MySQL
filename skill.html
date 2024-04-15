@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}Job Portal Login{% endblock %}
+
+{% block content %}
+<div class="skillpage">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skill Set Dropdown</title>
+<style>
+    html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../static/bluw.avif);
+    background-size: cover; /* Adjust as needed */
+    background-position: center; /* Adjust as needed */
+    
+}
+
+.skillpage {
+    padding: 20px;
+    max-width: 400px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 10px;
+}
+
+select {
+    padding: 8px;
+    margin-bottom: 15px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+</style>
+</head>
+<body>
+
+<form action="{{ url_for('seeker.skillselect') }}" method="post">
+    <label for="skill">Select at least one skill:</label>
+    <select name="skill" id="skill" multiple>
+      <option value="" disabled selected>Select a skill</option>
+      {% for skill in skills %}
+      <option value="{{ skill }}">{{ skill }}</option>
+      {% endfor %}
+    </select>
+    <div>
+      <label>Skill level:</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="skill_level" id="Basic" value="Basic" {% if 'Basic' == request.form.get('skill_level', '') %} checked {% endif %}>
+        <label class="form-check-label" for="Basic">Basic</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="skill_level" id="Medium" value="Medium" {% if 'Medium' == request.form.get('skill_level', '') %} checked {% endif %}>
+        <label class="form-check-label" for="Medium">Medium</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="skill_level" id="Expert" value="Expert" {% if 'Expert' == request.form.get('skill_level', '') %} checked {% endif %}>
+        <label class="form-check-label" for="Expert">Expert</label>
+      </div>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>
+</div>
+{% endblock %}

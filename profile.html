@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Job Portal Login{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        background-image: url(../static/bluw.avif); /* Specify the path to your image */
+        background-size: cover; /* Adjust as needed */
+        background-position: center; /* Adjust as needed */
+    }
+
+    .profilepage {
+        background-color: rgba(255, 255, 255, 0.8); /* Optional: Add a semi-transparent white background to make the content more readable */
+        padding: 20px; /* Optional: Add some padding to the content */
+    }
+
+    .profile-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .profile-table th,
+    .profile-table td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    .profile-table th {
+        background-color: #f2f2f2;
+    }
+
+    .action {
+        display: block;
+        margin-top: 10px;
+        text-align: right;
+        text-decoration: none;
+        color: #007bff;
+    }
+
+    .action:hover {
+        color: #0056b3;
+    }
+</style>
+
+<div class="profilepage">
+    <h1>Seeker profile</h1>
+    <table class="profile-table">
+        <!-- Profile details -->
+        <!-- Include your profile details here as you already have -->
+    </table>
+    <a class="action" href="{{ url_for('seeker.update_profile') }}">Edit</a>
+</div>
+{% endblock %}

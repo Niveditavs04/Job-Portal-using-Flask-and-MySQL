@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Applicant Review</title>
+    <!-- Include your CSS stylesheets here -->
+    <style>
+        /* Resetting default margins and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Basic styling for body */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    background-image: url(../static/bluw.avif);
+    background-size: cover; /* Adjust as needed */
+    background-position: center; /* Adjust as needed */
+
+  }
+  
+  /* Styling for heading */
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Styling for action container */
+  .action {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Styling for action links */
+  .action a {
+    text-decoration: none;
+    color: #007bff;
+    margin-top: 10px;
+    display: block;
+  }
+  
+  .action a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Styling for applicant details */
+  .action ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+  }
+  
+  /* Styling for action select */
+  .action select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Styling for confirm action button */
+  .action button[type="submit"] {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .action button[type="submit"]:hover {
+    background-color: #218838;
+  }
+    </style>
+</head>
+<body>
+    <h1>Job Applicant Review</h1>
+
+    <div class="action">
+        <h2>Job Post ID: {{ post[0] }}</h2>
+        <a class="action" href="/viewjp/{{ post[0] }}">Click here to view job details!</a>
+            
+        <h3>Applicants:</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Applicant ID</th>
+                    <th>Apply Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ post[1] }}</td>
+                    <td>{{ post[2] }}</td>
+                    <td>{{ post[4] }}</td>
+                    <td><a class="action" href="/applicant_profile/{{ post[1] }}" onclick="trackProfileVisit('{{ post[1] }}')">View Profile</a></td>
+                </tr>
+                <!-- Add more applicant details as needed -->
+            </tbody>
+        </table>
+    </div>
+
+    <form method="post">
+        <div class="action">
+            <label for="action">Select Action:</label>
+            <select name="action" id="action" required>
+                <option value="" disabled selected>Select an action</option>
+                {% for action in actions %}
+                <option value="{{ action }}">{{ action }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="action">
+            <button type="submit">Confirm Action</button>
+        </div>
+    </form>
+   
+    <!-- Include your JavaScript code here -->
+    <script>
+        function trackProfileVisit(app_id) {
+            // Send an AJAX request to track the profile visit
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/track_visit/' + app_id, true);
+            xhr.send();
+        }
+    </script>
+</body>
+</html>

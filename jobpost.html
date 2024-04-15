@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post Job</title>
+  <style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+  }
+  
+  h2 {
+    text-align: center;
+  }
+  body {
+    background-image: url(../static/bluw.avif);
+    /* Adjust background properties as needed */
+    background-size: cover; /* Adjust as needed */
+    background-position: center; /* Adjust as needed */
+  }
+  form {
+    max-width: 600px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  form div {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  select,
+  textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  select[multiple] {
+    height: auto;
+  }
+  
+  .form-check {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  
+  button[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
+  .form-check-input[type="radio"],
+  .form-check-input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  
+  </style>
+</head>
+<body >
+  <h2>Post Job</h2>
+  <form action="{{ url_for('employer.jobpost') }}" method="post">
+    <div>
+      <label for="job">Select JOB TYPE:</label>
+        <select name="job" id="job" required>
+          <option value="" disabled selected>Select a job type</option>
+          {% for job in jobs %}
+          <option value="{{ job }}">{{ job }}</option>
+          {% endfor %}0
+        </select>
+    </div>
+    <label for="companyName">companyName:</label>
+    <input type="text" id="companyName" name="companyName" >
+    <div>
+      <label for="jobDescription">Job Description:</label>
+      <textarea id="jobDescription" name="jobDescription" rows="4" required></textarea>
+    </div>
+
+    <div>
+      <label for="addressStreet">Street Address:</label>
+      <input type="text" id="addressStreet" name="addressStreet" required>
+    </div>
+
+    <div>
+      <label for="addressCity">City:</label>
+      <input type="text" id="addressCity" name="addressCity" required>
+    </div>
+
+    <div>
+      <label for="addressState">State:</label>
+      <input type="text" id="addressState" name="addressState" required>
+    </div>
+
+    <div>
+      <label for="addressCountry">Country:</label>
+      <input type="text" id="addressCountry" name="addressCountry" required>
+    </div>
+
+    <div>
+      <label for="addressZip">pin Code:</label>
+      <input type="text" id="addressZip" name="addressZip" required>
+    </div>
+    <div>
+      <label for="skill">Select skill TYPE:</label>
+        <select name="skill" id="skill" multiple>
+          <option value="" disabled selected>Select a skill </option>
+          {% for skill in skills %}
+          <option value="{{ skill }}">{{ skill }}</option>
+          {% endfor %}
+        </select>
+    </div>
+    
+    <div>
+      <label>Skill level:</label>
+      <div class="form-check">
+          <input class="form-check-input" type="radio" name="skill_level" id="Basic" value="Basic" required>
+          <label class="form-check-label" for="Basic">Basic</label>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="radio" name="skill_level" id="Medium" value="Medium" required>
+          <label class="form-check-label" for="Medium">Medium</label>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="radio" name="skill_level" id="Expert" value="Expert" required>
+          <label class="form-check-label" for="Expert">Expert</label>
+      </div>
+      </div>
+    <button type="submit">Post Job</button>
+  </form>
+
+</body>
+</html>

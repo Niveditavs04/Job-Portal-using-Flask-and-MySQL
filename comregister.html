@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Registration Form</title>
+ <style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    background-image: url(../static/bluw.avif);
+    background-size: cover; /* Adjust as needed */
+    background-position: center; /* Adjust as needed */
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="date"],
+  input[type="url"],
+  textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+  button[type="submit"] {
+    position:right ;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    float: center;
+    font-size: 16px;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+ </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Company Registration Form - Job Portal</h2>
+    <form id="companyForm" enctype="multipart/form-data" action="{{ url_for('employer.compreg') }}" method="post"> <!-- enctype attribute added for file upload -->
+      <div class="form-group">
+        <label for="companyName">Company Name:</label>
+        <input type="text" id="companyName" name="companyName" required>
+      </div>
+      <!--company destination and profile description to be added later-->
+      <div class="form-group">
+        <label for="profiledesc">Profile Description:</label>
+        <input type="text" id="profiledesc" name="profiledesc" required>
+      </div>
+      <div class="form-group">
+        <label for="stream">Select Business Stream:</label>
+        <select name="stream" id="stream" required>
+          <option value="" disabled selected>Select a stream</option>
+          {% for stream in streams %}
+          <option value="{{ stream }}">{{ stream }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="establishmentDate">Establishment Main Date:</label>
+        <input type="date" id="establishmentDate" name="establishmentDate" required >
+      </div>
+      <div class="form-group">
+        <label for="companyURL">Company URL:</label>
+        <input type="url" id="companyURL" name="companyURL" required>
+      </div>
+      <div class="form-group">
+        <label for="companyimgURL">Company Logo URL:</label>
+        <input type="url" id="companyimgURL" name="companyimgURL" required>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>

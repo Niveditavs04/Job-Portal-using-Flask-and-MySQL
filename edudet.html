@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+
+{% block title %}Job Portal Login{% endblock %}
+
+{% block content %}
+<div class="edudetailspage">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education_detail</title>
+<style>
+    /* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body
+  {
+    background-image: url(../static/bluw.avif);
+    background-size: cover; /* Adjust as needed */
+    background-position: center; /* Adjust as needed */
+  }
+  /* Style the main container */
+  .main {
+    width: 70%; /* Adjusted width */
+    margin: 50px auto; /* Adjust margin to center vertically */
+  }
+  
+  /* Style the heading */
+  .text-center {
+    text-align: center;
+  }
+  
+  /* Style the form */
+  form {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+    font-weight: bold; /* Make the font bold */
+  }
+  
+  /* Style the input boxes */
+  .input_box {
+    margin-bottom: 20px;
+  }
+  
+  .input_box input[type="text"],
+  .input_box input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 3px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Style the icons */
+  .detail {
+    margin-right: 10px;
+    color: #555;
+  }
+  
+  /* Style the submit button */
+  input[type="button"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold; /* Make the font bold */
+  }
+  
+  input[type="button"]:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .main {
+        width: 90%;
+    }
+  }
+  
+  /* Adjust button for smaller screens */
+  .input_box {
+    position: relative;color: #203ff3;
+  }
+  
+  .input_box button {
+    position: absolute;
+    bottom: -17px;
+    right:0; color: #202bc6;
+    padding: 9px 28px;
+  }
+</style>
+</head>
+<body>
+    <div class="main">
+        <h2 class="text-center mt-5 mb-4">Fill Education details</h2>
+        <form id="educationForm" action="{{ url_for('seeker.buildprofile') }}" method="POST">
+            <div class="education">
+                
+
+                <div class="input_box">
+                    <span class="detail"><i class="fa fa-graduation-cap"></i></span>
+                    <input type="text" placeholder="Certified-degree (B.Tech,BSc.,BEd,etc.)" id="degree" name="degree" required>
+                </div>
+
+                <div class="input_box">
+                    <span class="detail"><i class="fa fa-graduation-cap"></i></span>
+                    <input type="text" placeholder="Major (CSE,IT,Microbiology,etc)" id="major" name="major" required>
+                </div>
+
+                <div class="input_box">
+                    <span class="detail"><i class="fa fa-school"></i></span>
+                    <input type="text" placeholder="Institute/University name" id="university" name="university"required>
+                </div>
+
+                <div class="input_box">
+                    <span class="detail"><i class="fa fa-calendar"></i></span>
+                    <label for="st_date">Starting date</label>
+                    <input type="date" class="form-control" id="st_date" placeholder="Starting date" name="st_date" required>
+                    <label for="end_date">End date</label>
+                    <input type="date" class="form-control" id="end_date" placeholder="End date" name="end_date" required>
+                </div>
+
+                <div class="input_box">
+                    <span class="detail"><i class="fa fa-percent"></i></span>
+                    <input type="text" placeholder="Percentage" id="percentage" name="percentage" required>
+                </div>
+
+                <div class="input_box">
+                    <span class="detail"><i class="fa fa-marker"></i></span>
+                    <input type="text" placeholder="CGPA" id="CGPA" name="cgpa" required>
+                </div>
+
+                <div class="input_box">
+                    <button type="submit" >Next</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+    
+</body>
+</html>
+</div>
+{% endblock %}
