@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Job Portal Login{% endblock %}
+
+{% block content %}
+<div class="emppage">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employer Profile</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='employer.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>Employer Profile</h2>
+    <form id="companyForm" method="POST" action="{{ url_for('employer.generale') }}">
+      <div class="form-group">
+        <label for="companyOption">Select Company:</label>
+        <select id="companyOption" name="companyOption">
+          <option value="" disabled selected>Select Company</option>
+          {% for company in companies %}
+          <option value="{{ company }}">{{ company }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+    <p>Not register? <a href="{{ url_for('employer.compreg') }}">register</a></p>
+
+  </div>
+</body>
+</html>
+</div>
+{% endblock %}

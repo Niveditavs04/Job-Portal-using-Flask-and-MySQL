@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Job Portal Login{% endblock %}
+
+{% block content %}
+<div class="skillpage">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skill Set Dropdown</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='skill.css') }}">
+</head>
+<body>
+
+<form action="{{ url_for('seeker.skillselect') }}" method="post">
+    <label for="skill">Select at least one skill:</label>
+    <select name="skill" id="skill" multiple>
+      <option value="" disabled selected>Select a skill</option>
+      {% for skill in skills %}
+      <option value="{{ skill }}">{{ skill }}</option>
+      {% endfor %}
+    </select>
+    <div>
+      <label>Skill level:</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="skill_level" id="Basic" value="Basic" {% if 'Basic' == request.form.get('skill_level', '') %} checked {% endif %}>
+        <label class="form-check-label" for="Basic">Basic</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="skill_level" id="Medium" value="Medium" {% if 'Medium' == request.form.get('skill_level', '') %} checked {% endif %}>
+        <label class="form-check-label" for="Medium">Medium</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="skill_level" id="Expert" value="Expert" {% if 'Expert' == request.form.get('skill_level', '') %} checked {% endif %}>
+        <label class="form-check-label" for="Expert">Expert</label>
+      </div>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Offers</title>
+    <!-- Include your CSS stylesheets here -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='jobsearch.css') }}">
+</head>
+<body>
+<div class="sjpage">
+ 
+    
+    <h1>Job Offerss</h1>
+    {% if posts %}
+        <ul>
+            {% for post in posts %}
+            <article class="post">
+                
+                    <div>
+                        <h1>Post ID: {{ post[0] }}</h1>
+                        <div class="about">{{ post[1] }}</div>
+                       
+                    </div>
+                    <form action="/apply_job/{{ post[0] }}" method="post">
+                        <button type="submit">Apply</button>
+                    </form>
+                <p class="body">{{ post[2] }}</p>
+                <a class="action" href="/viewjp/{{ post[0] }}">Click here to view job details!</a>
+        
+            </article>
+            {% if not loop.last %}
+                <hr>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No job offers found.</p>
+    {% endif %}
+</div>
+
+</body>
+</html>

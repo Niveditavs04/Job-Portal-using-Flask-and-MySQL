@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}Job Portal Login{% endblock %}
+
+{% block content %}
+<div class="experdetailspage"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expreriance_detail</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='experience.css') }}">
+
+</head>
+<body>
+    <div class="main1">
+<h2>Experiance Details</h2>
+<form action="{{ url_for('seeker.filldtls') }}" method="POST">
+    <div class="Expreriance">
+        <div class="input_box">
+            <input type="text" class="form-control" name="first_name" placeholder="First name*" required>
+            <input type="text" class="form-control" name="last_name" placeholder="Last name*" required>
+        </div>
+    
+        <div class="input_box">
+
+        <label for="job">Current Job</label>
+        <select id="job" name="is_current_job">
+            <option value="1">Yes</option> <!-- value="1" for true -->
+            <option value="0">No</option>  <!-- value="0" for false -->
+        </select>
+        </div>
+
+        <div class="input_box">
+        <span class="detail"><i class="fa fa-calendar"></i></span>
+                    
+        <label for="st_date">Starting date</label>
+        <input type="date" class="form-control" id="st_date" name="start_date" placeholder="Starting date">
+        <label for="end_date">End date</label>
+        <input type="date" class="form-control" id="end_date" name="end_date" placeholder="End date">
+   
+    </div>
+    <div class="input_box">
+        <span class="detail">JOB_POST</span>
+        <input type="text" id="post" name="job_title" >
+        
+    </div>
+   
+    <div class="input_box">
+        <span class="detail">Company Name</span>
+        <input type="text" id="company" name="company_name" >
+        
+    </div>
+
+    <div class="input_box">
+        <span class="detail">Job City</span>
+        <input type="text" id="city" name="job_location_city" >
+        
+    </div>
+    <div class="input_box">
+        <span class="detail">Job state</span>
+        <input type="text" id="state" name="job_location_state">
+        
+    </div>
+
+    <div class="input_box">
+        <span class="detail">Job Country</span>
+        <input type="text" id="country" name="job_location_country">
+        
+    </div>
+
+    <div class="input_box">
+        <label for="current_salary">Current Salary</label>
+        <input type="text" id="current_salary" name="current_salary">
+    </div>
+    
+    <div class="input_box">
+        <label for="annually_monthly">Is Annually/Monthly</label>
+        <select id="annually_monthly" name="is_annually_monthly">
+            <option value="annually">Annually</option>
+            <option value="monthly">Monthly</option>
+        </select>
+    </div>
+    
+    <div class="input_box">
+        <label for="currency">Currency (EUR,USD,INR,JPY,etc.)</label>
+        <input type="text" id="currency" name="currency" maxlength="3">
+    </div>
+    
+<div class="input_box">
+\<textarea name="description" id="D" cols="15" rows="5">Describe  your role</textarea>        
+    </div>
+<div>
+    <button type="submit" class="button">Next</button>
+</div>
+
+    </div>
+
+</form>
+        
+    </div>
+    
+</body>
+<html>
+</div>
+{% endblock %}

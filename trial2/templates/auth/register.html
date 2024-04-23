@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Portal</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* Custom Styles */
+        .form-container {
+            max-width: 400px;
+            margin: auto;
+        }
+        .input-name {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center mt-5 mb-4">Registration Form</h2>
+        <div class="form-container">
+            <form action="{{ url_for('user.register') }}" method="POST">
+                <div class="form-group input-name">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="first_name" placeholder="First name*" required>
+                        <input type="text" class="form-control" name="last_name" placeholder="Last name*" required>
+                    </div>
+                </div>
+
+                <div class="form-group input-name">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                        </div>
+                        <input type="email" class="form-control" name="email" placeholder="Email*" required>
+                    </div>
+                </div>
+
+                <div class="form-group input-name">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                        </div>
+                        <input type="date" class="form-control"  name="date_of_birth" required> <!-- Add 'required' attribute to make it mandatory -->
+                    </div>
+                </div>
+
+                <div class="form-group input-name">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                        </div>
+                        <input type="password" class="form-control" name="password" placeholder="Password*" required>
+                    </div>
+                </div>
+
+                <div class="form-group input-name">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                        </div>
+                        <input type="password" class="form-control" placeholder="Confirm password*" required>
+                    </div>
+                </div>
+
+                <div class="form-group input-name">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="terms" required>
+                        <label class="form-check-label" for="terms">I accept the terms and conditions</label>
+                    </div>
+                </div>
+                <!--added new profile pic option and email sms notifications-->
+                <div class="form-group input-name">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="emailNotification">
+                        <label class="form-check-label" for="emailNotification">Email Notification</label>
+                    </div>
+                </div>
+                
+                <div class="form-group input-name">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="smsNotification">
+                        <label class="form-check-label" for="smsNotification">SMS Notification</label>
+                    </div>
+                </div>
+                
+
+                <div class="form-group input-name">
+                    <label for="profilePicture">Profile Picture:</label>
+                    <input type="file" class="form-control-file" name="profilePicture" id="profilePicture" accept="image/*">
+                </div>
+
+                 <!-- Option box with three options -->
+            <div class="form-group input-name">
+                <label>Register as:</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="userType" id="seeker" value="seeker" required>
+                    <label class="form-check-label" for="seeker">Seeker</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="userType" id="employer" value="employer" required>
+                    <label class="form-check-label" for="employer">Employer</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="userType" id="neutral" value="neutral" required>
+                    <label class="form-check-label" for="neutral">Neutral</label>
+                </div>
+            </div>
+
+            <div class="form-group input-name">
+                <label>gender:</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="usergender" id="F" value="F" required>
+                    <label class="form-check-label" for="F">female</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="usergender" id="M" value="M" required>
+                    <label class="form-check-label" for="M">Male</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="usergender" id="O" value="O" required>
+                    <label class="form-check-label" for="O">Other</label>
+                </div>
+            </div>
+
+
+        
+                <div class="form-group input-name">
+                    <button type="submit" class="btn btn-primary btn-block">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (Optional) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
