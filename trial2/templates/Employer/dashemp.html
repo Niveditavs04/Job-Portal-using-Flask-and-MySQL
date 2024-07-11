@@ -1,0 +1,78 @@
+
+    
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Job Seeker Dashboard</title>
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='home .css') }}">
+
+    </head>
+    <body>
+      <style>
+        body {
+            background-image: url("{{ url_for('static', filename='images/search.png') }}"); /* Specify the path to your image */
+            background-size: cover; /* Adjust as needed */
+            background-position: center; /* Adjust as needed */
+        }
+    </style>
+      <header>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="{{ url_for('portal.hello_flask') }}">Home</a></li>
+            <li> {% if g.user %}
+              <a href="{{ url_for('user.logout') }}">Logout</a>
+            {% else %}
+              <a href="{{ url_for('user.login') }}">Login</a>
+            {% endif %}
+          </li>
+            <li><a href="{{ url_for('portal.aboutus') }}">About</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <div class="container">
+        <div class="dashboard-container">
+    
+          <div class="dashboard-header">
+            <h1>Employer Dashboard</h1>
+          </div>
+         
+          <div class="dashboard-content">
+            <a href="{{ url_for('portal.alljobposts') }}"  class="card total-jobs">
+              <div class="card-body">
+                <h5 class="card-title">Total job posts</h5>
+                <p class="card-text">You have {{ total_posts }}  job posts</p>
+              </div>
+            </a>
+            <a  class="active-jobs">
+              <div class="card-body">
+                <h5 class="card-title">Total Selected applicants</h5>
+                <p class="card-text">You have Selected {{ select }} applicants!!</p>
+              </div>
+            </a>
+            <a href="{{ url_for('employer.applicants') }}" class="card ats">
+              <div class="card-body">
+                <h5 class="card-title">Job Applicants</h5>
+                <p class="card-text">You have {{ total_apps }}  job applicants</p>
+              </div>
+            </a>
+          </div>
+          <div class="text-center profile-builder">
+            <!-- Anchor tag linking to educationdetails.html -->
+            <a href="{{ url_for('employer.jobpost') }}"   class="btn btn-primary">Post a job</a>
+      </div>
+      </div>
+
+      <footer>
+        <p>&copy; 2024 Job Portal. All rights reserved.</p>
+      </footer>
+    </body>
+    </html>
+   

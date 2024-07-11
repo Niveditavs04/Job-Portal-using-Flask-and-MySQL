@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Applicant Review</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='review.css') }}">
+</head>
+<body>
+    <div class="review-page">
+        <h1>Job Applicant Review</h1>
+        <div class="applicant-section">
+            <h2>Job Post ID: {{ post[0] }}</h2>
+            <a class="view-details" href="/viewjp/{{ post[0] }}">View Job Details</a>
+            <h3>Applicants:</h3>
+            <ul class="applicant-list">
+                <li>
+                    <div class="applicant-info">
+                        <p><strong>Applicant ID:</strong> {{ post[1] }}</p>
+                        <p><strong>Apply Date:</strong> {{ post[2] }}</p>
+                        <p><strong>Status:</strong> {{ post[4] }}</p>
+                        <a class="view-profile" href="/applicant_profile/{{ post[1] }}" onclick="trackProfileVisit('{{ post[1] }}')">View Profile</a>
+                    </div>
+                </li>
+                <!-- Add more applicant details as needed -->
+            </ul>
+        </div>
+        <form class="action-form" method="post">
+            <div class="select-action">
+                <label for="action">Select Action:</label>
+                <select name="action" id="action" required>
+                    <option value="" disabled selected>Select an action</option>
+                    {% for action in actions %}
+                    <option value="{{ action }}">{{ action }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button class="confirm-action" type="submit">Confirm Action</button>
+        </form>
+    </div>
+    <!-- Include your JavaScript code here -->
+    <script>
+        function trackProfileVisit(app_id) {
+            // Send an AJAX request to track the profile visit
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/track_visit/' + app_id, true);
+            xhr.send();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Your Job Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+        nav a:hover {
+            background-color: #555;
+        }
+        section {
+            padding: 20px;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>About Us - Your Job Portal</h1>
+    </header>
+    <nav>
+        <a href="{{ url_for('portal.hello_flask') }}">Home</a>
+        <a href="{{ url_for('portal.contactus') }}">Contact Us</a>
+        <a href="{{ url_for('portal.services') }}">Services</a>
+    </nav>
+    <section>
+        <h2>Our Mission</h2>
+        <p>At Your Job Portal, our mission is to connect job seekers with opportunities and empower companies to find the right talent efficiently.</p>
+
+        <h2>Our Team</h2>
+        <p>We are a dedicated team of professionals passionate about helping individuals and businesses achieve their goals. With years of experience in the recruitment industry, we understand the challenges and opportunities in the job market.</p>
+
+        <h2>Key Features</h2>
+        <ul>
+            <li>Advanced job search functionality</li>
+            <li>User-friendly interface for both job seekers and companies</li>
+            <li>Customized job recommendations based on user preferences</li>
+            <li>Easy job posting and application process</li>
+            <li>Dedicated customer support for both job seekers and companies</li>
+        </ul>
+
+        <h2>Get in Touch</h2>
+        <p>If you have any questions or feedback, please don't hesitate to <a href="{{ url_for('portal.contactus') }}">contact us</a>. We'd love to hear from you!</p>
+    </section>
+    <footer>
+        <p>&copy; 2024 Your Job Portal. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

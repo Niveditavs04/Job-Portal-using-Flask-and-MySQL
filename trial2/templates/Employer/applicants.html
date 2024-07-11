@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Applicants</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .nav-links {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links li:first-child {
+            margin-left: 0;
+        }
+
+        .nav-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            color: #333;
+        }
+
+        .post {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        .action {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .action:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('portal.hello_flask') }}">Home</a></li>
+                <li>
+                    {% if g.user %}
+                        <a href="{{ url_for('user.logout') }}">Logout</a>
+                    {% else %}
+                        <a href="{{ url_for('user.login') }}">Login</a>
+                    {% endif %}
+                </li>
+                <li><a href="{{ url_for('portal.aboutus') }}">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1>Job Applicants</h1>
+
+    <table>
+        <tr>
+            <th>Job Post ID</th>
+            <th>Applicant ID</th>
+            <th>Apply Date</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        {% for post in total_applicants %}
+        <tr>
+            <td>{{ post[0] }}</td>
+            <td>{{ post[1] }}</td>
+            <td>{{ post[2] }}</td>
+            <td>{{ post[4] }}</td>
+            <td>
+                <a class="action" href="/viewjp/{{ post[0] }}">View Job Details</a>
+                <a class="action" href="/review_app/{{ post[1] }}/{{ post[3] }}">Review</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Include your JavaScript code here -->
+</body>
+</html>

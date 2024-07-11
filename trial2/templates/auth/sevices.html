@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Your Job Portal</title>
+    <style>
+        /* Your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+        nav a:hover {
+            background-color: #555;
+        }
+        section {
+            padding: 20px;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Services - Your Job Portal</h1>
+    </header>
+    <nav>
+        <a href="{{ url_for('portal.hello_flask') }}">Home</a>
+        <a href="{{ url_for('portal.aboutus') }}">About</a>
+        <a href="{{ url_for('portal.contactus') }}">Contact Us</a>
+    </nav>
+    <section>
+        <h2>For Job Seekers</h2>
+        <ul>
+            <li>Advanced job search functionality</li>
+            <li>Customized job recommendations based on user preferences</li>
+            <li>User-friendly interface for browsing and applying for jobs</li>
+            <li>Resume building tools and resources</li>
+            <li>Job alerts and notifications</li>
+        </ul>
+
+        <h2>For Employers</h2>
+        <ul>
+            <li>Easy job posting and management</li>
+            <li>Access to a large pool of qualified candidates</li>
+            <li>Applicant tracking system (ATS) for efficient hiring process</li>
+            <li>Customized employer profiles to showcase company culture and values</li>
+            <li>Dedicated customer support for hiring needs</li>
+        </ul>
+
+        <h2>Additional Services</h2>
+        <ul>
+            <li>Resume writing services</li>
+            <li>Interview preparation workshops</li>
+            <li>Career counseling and guidance</li>
+            <li>Networking events and job fairs</li>
+            <li>Industry-specific job boards and resources</li>
+        </ul>
+    </section>
+    <footer>
+        <p>&copy; 2024 Your Job Portal. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

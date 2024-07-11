@@ -1,0 +1,135 @@
+
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Edit post</title>
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="{{ url_for('static', filename='vp.css') }}">
+  </head>
+  <body>
+      <div class="updateprofile">
+          <form  method="post">
+            <label for="id">profile id: {{ post[0] }}</label>
+              
+              <label for="fn">First Name</label>
+              <input name="fn" id="fn" value="{{ request.form.get('fn', post[1]) }}" required>
+            
+              
+              <label for="Ln">Last Name</label>
+              <textarea name="Ln" id="Ln" required>{{ request.form.get('Ln', post[2]) }}</textarea>
+              <div class="updateprofile">
+                <label for="salary">salary:{{ post[3] }} </label>
+             
+                <div class="updateprofile">
+                  <label for="current_salary">Update Current Salary</label>
+                  <input type="text" id="current_salary" name="current_salary" required>
+              </div>
+              
+              <div class="updateprofile">
+                  <label for="annually_monthly">Is Annually/Monthly</label>
+                  <select id="annually_monthly" name="is_annually_monthly">
+                      <option value="annually">Annually</option>
+                      <option value="monthly">Monthly</option>
+                  </select>
+              </div>
+              
+              <div class="updateprofile">
+                  <label for="currency">Currency (EUR,USD,INR,JPY,etc.)</label>
+                  <input type="text" id="currency" name="currency" maxlength="3">
+              </div>
+  
+                <h2>Education Details</h2>
+              <label for="Degree">Update Degree: {{post[4]}}</label>
+              
+              <div class="input_box">
+                <span class="detail"><i class="fa fa-graduation-cap"></i></span>
+                <input type="text" placeholder="Certified-degree (B.Tech,BSc.,BEd,etc.)" id="degree" name="degree" required>
+            </div>
+
+            <div class="input_box">
+                <span class="detail"><i class="fa fa-graduation-cap"></i></span>
+                <input type="text" placeholder="Major (CSE,IT,Microbiology,etc)" id="major" name="major" required>
+            </div>
+
+            <div class="input_box">
+                <span class="detail"><i class="fa fa-school"></i></span>
+                <input type="text" placeholder="Institute/University name" id="university" name="university"required>
+            </div>
+              <label for="percentage">percentage</label>
+              <input name="percentage" id="percentage" value="{{ request.form.get('percentage', post[5]) }}" required>
+            
+              <label for="cgpa">cgpa</label>
+              <input name="cgpa" id="cgpa" value="{{ request.form.get('cgpa', post[6]) }}" required>
+            
+              <div class="updateprofile">
+                <span class="detail"><i class="fa fa-calendar"></i></span>
+                <label for="st_date">Starting date</label>
+                <input type="date" class="form-control" id="st_date" value="{{ request.form.get('st_date', post[7]) }}" name="st_date" required>
+                <label for="end_date">End date</label>
+                <input type="date" class="form-control" id="end_date" value="{{ request.form.get('end_date', post[8]) }}" name="end_date" required>
+            </div>
+                </div>
+                <div class="updateprofile">
+                    <h2>Experience Details</h2>
+                 
+             
+              <label for="profiledesc">profile description</label>
+              <input name="profiledesc" id="profiledesc" value="{{ request.form.get('profiledesc', post[9]) }}" required>
+              <label for="CurrentJob">Current Job: {{post[10]}}</label>
+              <select id="job" name="is_current_job">
+                <option value="1">Yes</option> <!-- value="1" for true -->
+                <option value="0">No</option>  <!-- value="0" for false -->
+            </select>
+              <label for="JobTitle">Job Title</label>
+              <div class="updateprofile">
+                <span class="detail"><i class="fa fa-calendar"></i></span>
+                <label for="jst_date">Starting date</label>
+                <input type="date" class="form-control" id="jst_date" value="{{ request.form.get('jst_date', post[11]) }}" name="jst_date" required>
+                <label for="jend_date">End date</label>
+                <input type="date" class="form-control" id="jend_date" value="{{ request.form.get('jend_date', post[12]) }}" name="jend_date" required>
+            </div>
+              <input name="JobTitle" id="JobTitle" value="{{ request.form.get('JobTitle', post[13]) }}" required>
+              <label for="jloc">Job location</label>
+              <input name="jloc" id="jloc" value="{{ request.form.get('jloc', post[14]) }}" required>
+              <label for="jloc1">Job location</label>
+              <input name="jloc1" id="jloc1" value="{{ request.form.get('jloc1', post[15]) }}" required>
+              <label for="jloc2">Job location</label>
+              <input name="jloc2" id="jloc2" value="{{ request.form.get('jloc2', post[16]) }}" required>
+          
+            </div>
+              <div>
+                <label for="skill">Select skill type:</label>
+                <p><strong>Skill Set Names:</strong> {{ post[18] }}</p>
+    
+                <select name="skill" id="skill" multiple>
+                  {% for skill in skills %}
+                  <option value="{{ skill }}" {% if skill in request.form.getlist('skill') %} selected {% endif %}>{{ skill }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            
+              <div>
+                <label>Skill level:</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="skill_level" id="Basic" value="Basic" {% if 'Basic' == request.form.get('skill_level', '') %} checked {% endif %}>
+                  <label class="form-check-label" for="Basic">Basic</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="skill_level" id="Medium" value="Medium" {% if 'Medium' == request.form.get('skill_level', '') %} checked {% endif %}>
+                  <label class="form-check-label" for="Medium">Medium</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="skill_level" id="Expert" value="Expert" {% if 'Expert' == request.form.get('skill_level', '') %} checked {% endif %}>
+                  <label class="form-check-label" for="Expert">Expert</label>
+                </div>
+              </div>
+            
+              <input type="submit" value="Save">
+          </form>
+      </div>
+  </body>
+  </html>
+  

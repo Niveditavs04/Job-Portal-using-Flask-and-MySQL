@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=5.0">
+    <title>Job Portal Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> <!-- Linking CSS file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='home .css') }}"> <!-- Linking CSS file -->
+
+</head>
+<body>
+    <header>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="{{ url_for('portal.hello_flask') }}">Home</a></li>
+            <li> {% if g.user %}
+              <a href="{{ url_for('user.logout') }}">Logout</a>
+            {% else %}
+              <a href="{{ url_for('user.login') }}">Login</a>
+            {% endif %}
+          </li>
+            <li><a href="{{ url_for('portal.aboutus') }}">About</a></li>
+          </ul>
+        </nav>
+      </header>
+    <div class="container">
+        <h1>Login</h1>
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+        <form action="{{ url_for('user.login') }}" method="post">
+            <div class="form-group">
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Login">
+            </div>
+        </form>
+        <p>Forgot your password? <a href="{{ url_for('user.forgot_password') }}">Reset Password</a></p>
+        <p>Don't have an account? <a href="{{ url_for('user.register') }}">Signup</a></p>
+    </div>
+    <footer>
+        <p>&copy; 2024 Job Portal. All rights reserved.</p>
+      </footer>
+</body>
+</html>
+</div>

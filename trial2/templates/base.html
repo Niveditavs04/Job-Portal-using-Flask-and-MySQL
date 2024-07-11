@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Portal</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='jobsearch.css') }}">
+</head>
+<body>
+
+<header>
+  <nav>
+    <ul class="nav-links">
+      <li><a href="{{ url_for('portal.hello_flask') }}">Home</a></li>
+      <li> {% if g.user %}
+        
+          <li><a class="dropdown-item" href="{{ url_for('user.logout') }}">Logout</a></li>
+      
+      {% else %}
+        <a href="{{ url_for('user.login') }}">Login</a>
+      {% endif %}
+    </li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+  </nav>
+</header>
+{% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  
+{% block content %}
+{% endblock %}
+
+<footer>
+  <p>&copy; 2024 Job Portal. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

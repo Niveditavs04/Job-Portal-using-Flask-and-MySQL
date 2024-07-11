@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All applied jobs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header {
+            width: 100%;
+            padding: 20px;
+            background-color: #007bff;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .header img {
+            height: 60px; /* Increase the size of the image */
+            width: auto;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-right: 20px;
+        }
+
+        .nav-links li:last-child {
+            margin-right: 0;
+        }
+
+        .nav-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            color: #cceeff;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: #333;
+        }
+
+        .search-bar {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin-right: 10px;
+            width: 300px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .search-bar button {
+            padding: 15px 30px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+        }
+
+        .search-bar button:hover {
+            background-color: #0056b3;
+        }
+
+        .applied-jobs {
+            width: 90%;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: auto;
+        }
+
+        .applied-jobs table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .applied-jobs th, .applied-jobs td {
+            padding: 15px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .applied-jobs th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .applied-jobs tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        .applied-jobs a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .applied-jobs a:hover {
+            color: #0056b3;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .delete-btn:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <img src="{{ url_for('static', filename='images/JOB PORTAL.png') }}" alt="Logo">
+        <h1>All Applied Jobs</h1>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('portal.hello_flask') }}">Home</a></li>
+                <li>
+                    {% if g.user %}
+                        <a href="{{ url_for('user.logout') }}">Logout</a>
+                    {% else %}
+                        <a href="{{ url_for('user.login') }}">Login</a>
+                    {% endif %}
+                </li>
+                <li><a href="{{ url_for('portal.aboutus') }}">About</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="search-bar">
+        <form action="{{ url_for('portal.hello_flask') }}" method="POST">
+            <input type="text" name="jobtitle" placeholder="Enter Job Title">
+            <input type="text" name="company" placeholder="Enter Company">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <div class="applied-jobs">
+        {% if applied_jobs %}
+            <table>
+                <tr>
+                    <th>Application ID</th>
+                    <th>Apply Date</th>
+                    <th>Post ID</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                {% for post in applied_jobs %}
+                    <tr>
+                        <td>{{ post[0] }}</td>
+                        <td>{{ post[2] }}</td>
+                        <td>{{ post[1] }}</td>
+                        <td>{{ post[3] }}</td>
+                        <td>
+                            <a href="/viewjp/{{ post[1] }}">View Job Details</a>
+                            <form action="/delete_application/{{ post[0] }}" method="post" style="display: inline;">
+                                <button class="delete-btn" type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>No applied jobs yet.</p>
+        {% endif %}
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+.sjpage {
+    text-align: center;
+    padding: 50px;
+}
+
+.congratulations {
+    font-family: cursive; /* Change font style to cursive */
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #ff6600; /* Change color to orange */
+    animation: zigzag 0.6s infinite linear;
+}
+@keyframes zigzag {
+    0% {
+        transform: translateX(-2px) rotateZ(0deg);
+    }
+    25% {
+        transform: translateX(2px) rotateZ(2deg);
+    }
+    50% {
+        transform: translateX(-2px) rotateZ(-2deg);
+    }
+    75% {
+        transform: translateX(2px) rotateZ(2deg);
+    }
+    100% {
+        transform: translateX(-2px) rotateZ(0deg);
+    }
+}
+
+.post {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    text-align: left;
+}
+
+.post h3 {
+    margin-top: 0;
+}
+
+.post p {
+    margin-bottom: 15px;
+}
+
+.post .action {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.post .action:hover {
+    color: #0056b3;
+}
+
+.post button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.post button:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,70 @@
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Edit post</title>
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="{{ url_for('static', filename='updt.css') }}">
+  </head>
+  <body>
+      <div class="edit">
+          <form  method="post">
+              <label for="type">Job Type(full time:1, part time:2, contract:3)</label>
+              <input name="type" id="type" value="{{ request.form.get('type', post[4]) }}" required>
+            
+              <label for="ss">Selected skills: {{ post[10] }}</label>
+              
+              <label for="body">Job Description</label>
+              <textarea name="body" id="body" required>{{ request.form.get('body', post[2]) }}</textarea>
+            
+              <label for="Company">Company Name</label>
+              <input name="Company" id="Company" value="{{ request.form.get('Company', post[3]) }}" required>
+            
+              <label for="street">Street</label>
+              <input name="street" id="street" value="{{ request.form.get('street', post[5]) }}" required>
+            
+              <label for="City">City</label>
+              <input name="City" id="City" value="{{ request.form.get('City', post[6]) }}" required>
+            
+              <label for="State">State</label>
+              <input name="State" id="State" value="{{ request.form.get('State', post[7]) }}" required>
+            
+              <label for="Country">Country</label>
+              <input name="Country" id="Country" value="{{ request.form.get('Country', post[8]) }}" required>
+            
+              <label for="zip">Zip</label>
+              <input name="zip" id="zip" value="{{ request.form.get('zip', post[9]) }}" required>
+            
+              <div>
+                <label for="skill">Select skill type:</label>
+                <select name="skill" id="skill" multiple>
+                  {% for skill in skills %}
+                  <option value="{{ skill }}" {% if skill in request.form.getlist('skill') %} selected {% endif %}>{{ skill }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            
+              <div>
+                <label>Skill level:</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="skill_level" id="Basic" value="Basic" {% if 'Basic' == request.form.get('skill_level', '') %} checked {% endif %}>
+                  <label class="form-check-label" for="Basic">Basic</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="skill_level" id="Medium" value="Medium" {% if 'Medium' == request.form.get('skill_level', '') %} checked {% endif %}>
+                  <label class="form-check-label" for="Medium">Medium</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="skill_level" id="Expert" value="Expert" {% if 'Expert' == request.form.get('skill_level', '') %} checked {% endif %}>
+                  <label class="form-check-label" for="Expert">Expert</label>
+                </div>
+              </div>
+            
+              <input type="submit" value="Save">
+          </form>
+      </div>
+  </body>
+  </html>
+  

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title  >Job Posts</title>
+  <style>
+     title {
+            color: rgb(8, 124, 226);
+        }
+        body {
+            background-image: url("{{ url_for('static', filename='images/search2.png') }}"); /* Specify the path to your image */
+            background-size:cover; /* Adjust as needed */
+            background-position: center; /* Adjust as needed */
+        }
+        /* Custom CSS for this page */
+        .sjpage {
+            text-align: center;
+            padding: 20px;
+        }
+        .post {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .post h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+          
+        }
+       
+        .about {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .body {
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        .action {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .action:hover {
+            color: #0056b3;
+        }
+        /* Custom styling for the apply button */
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold; /* Bold apply button */
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="sjpage">
+        <h1>Job Posts</h1>
+        {% if job_posts %}
+            <ul>
+                {% for post in job_posts %}
+                <article class="post">
+                    <div>
+                        <h1>Post ID: {{ post[0] }}</h1>
+                        <div class="about">{{ post[1] }}</div>
+                    </div>
+                    <form action="/apply_job/{{ post[0] }}" method="post">
+                        <button type="submit">Apply</button>
+                    </form>
+                    <p class="body">{{ post[2] }}</p>
+                    <a class="action" href="/viewjp/{{ post[0] }}">Click here to view job details!</a>
+                </article>
+                {% if not loop.last %}
+                    <hr>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No job posts found.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Seeker Dashboard</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='home .css') }}">
+
+</head>
+<body>
+  <style>
+    body {
+        background-image: url("{{ url_for('static', filename='images/seeker.png') }}"); /* Specify the path to your image */
+        background-size: cover; /* Adjust as needed */
+        background-position: center; /* Adjust as needed */
+    }
+</style>
+  <header>
+   
+    <nav>
+      <ul class="nav-links">
+        <li><a href="{{ url_for('portal.hello_flask') }}">Home</a></li>
+        <li> {% if g.user %}
+          <a href="{{ url_for('user.logout') }}">Logout</a>
+        {% else %}
+          <a href="{{ url_for('user.login') }}">Login</a>
+        {% endif %}
+      </li>
+        <li><a href="{{ url_for('portal.aboutus') }}">About</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="container">
+    <div class="dashboard-container">
+
+      <div class="dashboard-header">
+        <h1>Job Seeker Dashboard</h1>
+      </div>
+      <div class="progress">
+        <div id="progress-bar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" ></div>
+      </div>
+      <div class="dashboard-content">
+        <a href="{{ url_for('seeker.appliedjobs') }}" class="card applied-jobs">
+          <div class="card-body">
+            <h5 class="card-title">Applied Jobs</h5>
+            <p class="card-text">You have applied to {{ total_apps }} jobs</p>
+          </div>
+        </a>
+        <a href="#" class="card saved-jobs">
+          <div class="card-body">
+            <h5 class="card-title">Saved jobs and profile visits</h5>
+            <p class="card-text">You have {{ total_pv }} profile visits!!</p>
+          </div>
+        </a>
+        <a href="{{ url_for('portal.joboffer') }}" class="card job-offer">
+          <div class="card-body">
+            <h5 class="card-title">Job Offer</h5>
+            <p class="card-text">Congratulations! You've received a job offer</p>
+          </div>
+        </a>
+      </div>
+      <div class="text-center profile-builder">
+        <!-- Anchor tag linking to educationdetails.html -->
+        <a href="{{ url_for('seeker.view_profile') }}"  id="viewprofile" class="btn btn-primary">View Profile</a>
+
+      <!-- Add the progress bar -->
+        </div>
+      <div class="text-center profile-builder">
+        <!-- Anchor tag linking to educationdetails.html -->
+        <a href="{{ url_for('seeker.checkfill') }}"  id="profile-builder-btn" class="btn btn-primary">Profile Builder</a>
+
+      <!-- Add the progress bar -->
+        
+
+<!-- Include the JavaScript code -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      // Update progress bar when the page loads
+      updateProgressBar();
+  });
+
+  // Function to update the progress bar
+  function updateProgressBar() {
+      fetch("{{ url_for('seeker.progress') }}", {
+          method: "GET",
+          headers: {
+              "Content-Type": "application/json"
+          }
+      })
+      .then(response => response.json())
+      .then(data => {
+          let progressBar = document.getElementById("progress-bar");
+          let profileBuilderButton = document.getElementById("profile-builder-btn");
+            
+          if (data.educationDetails && data.experienceDetails && data.skillDetails) {
+              progressBar.style.width = "100%";
+              progressBar.classList.remove("bg-warning");
+              progressBar.classList.add("bg-success");
+              // Hide the button if progress is complete
+              profileBuilderButton.style.display = "none";
+          } else if (data.educationDetails || data.experienceDetails) {
+              progressBar.style.width = "75%";
+              progressBar.classList.remove("bg-success");
+              progressBar.classList.add("bg-warning");
+          } else {
+              progressBar.style.width = "50%";
+              progressBar.classList.remove("bg-warning");
+              progressBar.classList.add("bg-primary");
+          }
+      })
+      .catch(error => console.error("Error:", error));
+  }
+</script>
+</div>
+<footer>
+  <p>&copy; 2024 Job Portal. All rights reserved.</p>
+</footer>
+</body>
+</html>

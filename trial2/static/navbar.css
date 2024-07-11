@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+#logo img{
+    width: 240px;
+    height: 60px;
+}
+
+.nav-container{
+    height: 100px;
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+    margin: 0px 10px 0px 0px;
+    font-size: 20px;
+    /* border: 2px solid black; */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    transition: all 0.3s ease;
+    background: #fff;
+    border-bottom: 1px solid rgba(0,0,0,.14);
+} 
+
+.navbar{
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.navbar li{
+    display: flex;
+    /* padding: 0px 20px 0px 20px; */
+    margin-left: 4px;
+    margin-right: 4px;
+    padding: 11px 16px;
+    height: 50px;
+    align-items: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+
+
+.nav-btn button{
+  all: unset;
+  cursor: pointer;
+  height: 40px;
+  border: 1px solid rgba(0,0,0,.14);
+  border-radius: 12px;
+  padding: 8px 24px 7px;
+  font-weight: 500;
+  line-height: 24px;
+  text-decoration: none;
+  transition: all .3s;
+  display: inline-block;
+  margin: 0px 10px 0px 0px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.nav-btn button:nth-child(2){
+    border: none;
+    background-color: #111;
+    color: #fff;
+}
+
+.navbar li:hover {
+    border: 1px solid rgba(236,46,58,0);
+    border-radius: 12px;
+    border: 1px solid #ec2e3a;
+    background-color: #ffdfda;
+    color: #ec2e3a;
+    box-shadow: 0 0 0 4px rgba(236,46,58,.25);
+}
+.nav-btn button:hover {
+    border: 1px solid rgba(236,46,58,0);
+    border-radius: 12px;
+    border: 1px solid #ec2e3a;
+    background-color: #ffdfda;
+    color: #ec2e3a;
+    box-shadow: 0 0 0 4px rgba(236,46,58,.25);
+}
+
+#signin:hover{
+    border-color: #ce0026;
+    background: #ce0026;
+    color: #fff;
+    box-shadow: 0 0 0 4px rgba(236,46,58,.25);
+}

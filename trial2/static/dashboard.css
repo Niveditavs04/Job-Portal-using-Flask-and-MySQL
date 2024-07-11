@@ -1,0 +1,57 @@
+.progress-bar {
+  width: 50%; /* Adjust the width as needed */
+  height: 10px; /* Set the height of the progress bar */
+  background-color: green; /* Set the background color */
+  margin-bottom: 10px; /* Add space between the progress bar and cards */
+}
+
+
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Align items to the bottom */
+    height: 100vh; /* Set the height of the container to viewport height */
+  }
+
+  .dashboard-header h1 {
+    color: #2bd739; /* Set your desired color */
+    font-weight: bold; /* Make the font bold */
+    font-family: 'Lucida Calligraphy', sans-serif; /* Example of another font suggestion */
+}
+
+  
+  .dashboard-content {
+    display: flex;
+    flex-direction: row; /* Arrange cards horizontally */
+    justify-content: center;
+    margin-bottom: 20px; /* Add space between cards and footer */
+  }
+  
+  .card {
+    width: 30%; /* Adjust card width as needed */
+    margin: 0 10px; /* Add space between cards */
+  }
+  
+  /* Media query for smaller screens */
+  @media (max-width: 720px) {
+    .card {
+      width: 45%; /* Adjust card width for smaller screens */
+    }
+  }
+
+   /* Define CSS classes for different colors */
+
+  
+.bg-primary {
+    background-color: blue;
+}
+
+.bg-warning {
+    background-color: yellow;
+}
+
+.bg-success {
+    background-color: green;
+}
+  
